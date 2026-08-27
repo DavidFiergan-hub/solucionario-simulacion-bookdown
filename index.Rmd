@@ -1,11 +1,45 @@
 --- 
-title: " Bookdown v1 "
-subtitle: "Simulación: Solucionario Prueba 01"
-author: "Leonardo Medina"
+title: "Solucionario de Simulación"
+author: "David Fierro"
+date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
+bibliography: []
+biblio-style: apalike
+link-citations: yes
+description: "Solucionario formal y computacional de ejercicios de Simulación de Procesos Estocásticos - Escuela Politécnica Nacional."
 ---
 
 # Presentación {-}
 
-Solucionario de la materia de Simulación desarrollado en Bookdown.
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  fig.align = "center",
+  fig.width = 7.5,
+  fig.height = 4.2
+)
+
+# Configurar reticulate para usar el python del entorno activo
+library(reticulate)
+reticulate::use_python(Sys.which("python3"), required = TRUE)
+```
+
+Bienvenido al **Solucionario de Simulación de Procesos Estocásticos**.
+
+Este material contiene las soluciones formales y computacionales a diversos problemas de la disciplina, desarrollados combinando:
+
+* **Demostraciones analíticas rigurosas.**
+* **Algoritmos de Simulación de Monte Carlo.**
+* **Implementaciones ejecutables y gráficos dinámicos en Python.**
+
+### Estructura de los problemas
+
+Cada capítulo aborda un problema específico con la siguiente estructura:
+1. **Planteamiento formal:** Definición matemática de las variables y objetivos.
+2. **Desarrollo analítico:** Cálculo exacto mediante probabilidad y cálculo estocástico.
+3. **Algoritmo de Monte Carlo:** Pseudocódigo y diseño del estimador.
+4. **Simulación en Python:** Código reproducible y gráficos de convergencia/distribución.
+5. **Análisis de resultados:** Tablas comparativas y análisis del error estándar.

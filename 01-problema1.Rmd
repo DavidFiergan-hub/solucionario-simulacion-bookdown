@@ -18,20 +18,17 @@ $$N := \min\left\{n \in \mathbb{N} : \sum_{i=1}^{n} U_{i} > 1\right\}$$
   3) Devolver $n$.
 
 * **Estimador de $\mathbb{E}[N]$**  
-  Generamos $M$ valores independientes de $N$, denotados como $N_{1}, N_{2}, \dots, N_{M}$, y calculamos la media muestral:  
-  $$\hat{E}[N] = \frac{1}{M}\sum_{j=1}^{M}N_{j}$$
+  $$\hat{E}[N] = \frac{1}{M}\sum_{j=1}^{M}N_{j}, \qquad \text{Error estándar} = \frac{S_N}{\sqrt{M}}$$
 
-* **Error estándar de la estimación**  
-  $$\text{Error estándar} = \frac{S_N}{\sqrt{M}}$$
+### Código de simulación y gráfico en Python.
 
-### Código de simulación en Python.
-
-```python
+```{python}
 import numpy as np
 import matplotlib.pyplot as plt
 
+np.random.seed(42)
+
 def generar_N():
-    """Genera un valor de N."""
     suma = 0.0
     n = 0
     while suma <= 1.0:
@@ -40,13 +37,11 @@ def generar_N():
     return n
 
 def estimar_E_N(M):
-    """Estima E[N] usando M simulaciones."""
     valores_N = np.array([generar_N() for _ in range(M)])
     estimacion = np.mean(valores_N)
     error_est = np.std(valores_N, ddof=1) / np.sqrt(M)
     return estimacion, error_est, valores_N
 
-# Tamaños de muestra a probar
 muestras = [100, 1000, 10000]
 
 print("Simulación para estimar E[N]")
@@ -55,32 +50,30 @@ print(f"{'M':<10} {'Estimación':<15} {'Error estándar':<15}")
 print("-" * 60)
 
 for M in muestras:
-    estimacion, error, valores = estimar_E_N(M)
+    estimacion, error, _ = estimar_E_N(M)
     print(f"{M:<10} {estimacion:<15.6f} {error:<15.6f}")
 
-# Simulación adicional con M = 100000 para mejor precisión
+# Simulación con M = 100,000 para gráfico
 M_grande = 100000
-estimacion_final, error_final, valores_final = estimar_E_N(M_grande)
+_, _, valores_final = estimar_E_N(M_grande)
 
-print("-" * 60)
-print(f"\nCon M = {M_grande}:")
-print(f"Estimación final: {estimacion_final:.6f}")
-print(f"Error estándar: {error_final:.6f}")
+# Histograma de frecuencias de N
+valores_unicos, frecuencias = np.unique(valores_final, return_counts=True)
+probabilidades = frecuencias / M_grande
+
+plt.figure(figsize=(7.5, 4.2))
+plt.bar(valores_unicos, probabilidades, color="#20639b", edgecolor="black", alpha=0.8, width=0.6)
+plt.axvline(np.e, color="#e74c3c", linestyle="--", linewidth=2, label=f"Valor exacto e ≈ {np.e:.4f}")
+plt.axvline(np.mean(valores_final), color="#2ecc71", linestyle=":", linewidth=2, label=f"Media muestral = {np.mean(valores_final):.4f}")
+plt.title("Distribución Empírica de N (M = 100,000 réplicas)", fontsize=12)
+plt.xlabel("Valor de N")
+plt.ylabel("Probabilidad estimada P(N = k)")
+plt.xticks(valores_unicos)
+plt.legend()
+plt.grid(axis="y", linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.show()
 ```
-
-### Resultados de la simulación
-
-Al ejecutar el código, se obtienen resultados similares a:
-
-| $M$ | Estimación | Error estándar |
-|:---|:---:|:---:|
-| $100$ | $2.740000$ | $0.086200$ |
-| $1000$ | $2.711000$ | $0.027540$ |
-| $10000$ | $2.717800$ | $0.008710$ |
-
-Con $M = 100000$:  
-**Estimación final:** $2.718350$  
-**Error estándar:** $0.002756$
 
 ---
 

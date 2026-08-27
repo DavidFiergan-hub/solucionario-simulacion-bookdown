@@ -48,40 +48,44 @@ $$U_{51202} = \frac{X_2}{1024} = \frac{482}{1024} = \frac{241}{512} = 0.47070312
 
 ---
 
-## Código de verificación en Python.
+## Código de verificación y gráfico en Python.
 
-```python
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
 a = 25
 c = 81
 m = 1024
 x0 = 40
 
-# Verificación computacional del período
+# Verificación de ciclo y almacenamiento de la secuencia completa
+secuencia = []
 visitados = set()
 x = x0
-periodo = 0
 while x not in visitados:
     visitados.add(x)
+    secuencia.append(x)
     x = (a * x + c) % m
-    periodo += 1
 
-print(f"Longitud del período obtenido: {periodo}")
-print(f"¿Es de ciclo óptimo?: {periodo == m}")
+periodo = len(secuencia)
+print(f"Período obtenido: {periodo} (¿Óptimo?: {periodo == m})")
 
-# Cálculo del término 51202
-x_n = x0
-pasos = 51202 % m
-for _ in range(pasos):
-    x_n = (a * x_n + c) % m
+# Cálculo exacto del término pedido
+x_51202 = secuencia[51202 % m]
+u_51202 = x_51202 / m
 
-u_n = x_n / m
+print(f"Valor de X_51202: {x_51202}")
+print(f"Valor de U_51202: {u_51202:.9f}")
 
-print(f"Valor de X_51202: {x_n}")
-print(f"Valor de U_51202: {u_n:.9f}")
+# Gráfico de dispersión de pares consecutivos (U_n vs U_{n+1})
+u_secuencia = np.array(secuencia) / m
+plt.figure(figsize=(6, 5))
+plt.scatter(u_secuencia[:-1], u_secuencia[1:], s=10, color="#20639b", alpha=0.6)
+plt.title("Estructura de Reticulado: $U_n$ vs $U_{n+1}$", fontsize=12)
+plt.xlabel("$U_n$")
+plt.ylabel("$U_{n+1}$")
+plt.grid(True, linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.show()
 ```
-
-### Resultados
-
-* **Período:** $1024$ (Ciclo óptimo verificado).  
-* **Valor de $X_{51202}$:** $482$.  
-* **Valor de $U_{51202}$:** $0.470703125$.

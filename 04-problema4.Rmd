@@ -15,23 +15,15 @@
      2.3) Incrementar el contador: $S \leftarrow S + 1$.  
   3) Devolver $S$.
 
-* **Estimadores de Monte Carlo**  
-  Se ejecutan $M = 1000$ simulaciones obteniendo $S_1, S_2, \dots, S_M$:  
-  * **Media muestral de sobres:** $\hat{E}[S] = \frac{1}{M}\sum_{j=1}^M S_j$  
-  * **Gasto medio:** $\hat{E}[\text{Gasto}] = \hat{E}[S] \times 0.80$  
-  * **Error estándar:** $\text{SE} = \frac{S_S}{\sqrt{M}}$  
-  * **Percentil 95:** Valor $s_{0.95}$ tal que $P(S \le s_{0.95}) \ge 0.95$.
-
 ---
 
-## Código de simulación en Python.
+## Código de simulación y distribución en Python.
 
-```python
+```{python}
 import numpy as np
 import matplotlib.pyplot as plt
 
 def simular_un_coleccionista(total_cromos=75, cromos_por_sobre=6):
-    """Simula el proceso de llenar un álbum comprando sobres."""
     album = set()
     sobres_comprados = 0
     while len(album) < total_cromos:
@@ -40,12 +32,10 @@ def simular_un_coleccionista(total_cromos=75, cromos_por_sobre=6):
         sobres_comprados += 1
     return sobres_comprados
 
-# Parametrización
 M = 1000
 np.random.seed(42)
 resultados_sobres = np.array([simular_un_coleccionista() for _ in range(M)])
 
-# Estimaciones
 media_sobres = np.mean(resultados_sobres)
 error_est = np.std(resultados_sobres, ddof=1) / np.sqrt(M)
 gasto_medio = media_sobres * 0.80
@@ -53,17 +43,27 @@ p95_sobres = int(np.ceil(np.percentile(resultados_sobres, 95)))
 
 print("Resultados de la Simulación (M = 1000)")
 print("-" * 50)
-print(f"Número medio de sobres: {media_sobres:.2f}")
-print(f"Error estándar:         {error_est:.2f}")
+print(f"Número medio de sobres: {media_sobres:.2f} +/- {error_est:.2f}")
 print(f"Gasto medio estimado:   ${gasto_medio:.2f}")
 print(f"Mínimo sobres (95%):    {p95_sobres}")
+
+# Histograma de distribución del número de sobres
+plt.figure(figsize=(7.5, 4.2))
+plt.hist(resultados_sobres, bins=35, density=True, color="#20639b", edgecolor="white", alpha=0.8)
+plt.axvline(media_sobres, color="#e74c3c", linestyle="--", linewidth=2, label=f"Media: {media_sobres:.2f} sobres")
+plt.axvline(p95_sobres, color="#f39c12", linestyle=":", linewidth=2, label=f"Percentil 95: {p95_sobres} sobres")
+plt.title("Distribución de Sobres para Completar el Álbum (M = 1000)", fontsize=12)
+plt.xlabel("Número de sobres requeridos")
+plt.ylabel("Densidad de probabilidad")
+plt.legend()
+plt.grid(axis="y", linestyle="--", alpha=0.5)
+plt.tight_layout()
+plt.show()
 ```
 
 ---
 
 ## Resultados de la simulación
-
-Al ejecutar la simulación con $M = 1000$ réplicas se obtienen los siguientes valores:
 
 | Pregunta / Parámetro | Estimación Monte Carlo | Error estándar / Confianza |
 |:---|:---:|:---:|
