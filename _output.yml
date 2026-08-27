@@ -2,8 +2,6 @@ bookdown::gitbook:
   css: style.css
   highlight: tango
   split_by: chapter
-  includes:
-    in_header: copy-button.html
   config:
     toc:
       collapse: subsection

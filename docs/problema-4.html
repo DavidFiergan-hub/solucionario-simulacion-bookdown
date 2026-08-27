@@ -52,41 +52,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-cat << 'EOF'> copy-button.html
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.querySelectorAll("pre.sourceCode, pre").forEach(function (codeBlock) {
-                if (codeBlock.querySelector(".btn-copy")) return;
-
-                var btn = document.createElement("button");
-                btn.className = "btn-copy";
-                btn.type = "button";
-                btn.innerText = "Copiar";
-
-                codeBlock.style.position = "relative";
-                codeBlock.appendChild(btn);
-
-                var clipboard = new ClipboardJS(btn, {
-                    target: function () {
-                        var code = codeBlock.querySelector("code");
-                        return code ? code : codeBlock;
-                    }
-                });
-
-                clipboard.on("success", function (e) {
-                    btn.innerText = "¡Copiado!";
-                    btn.classList.add("btn-copy-success");
-                    setTimeout(function () {
-                        btn.innerText = "Copiar";
-                        btn.classList.remove("btn-copy-success");
-                    }, 2000);
-                    e.clearSelection();
-                });
-            });
-        });
-    </script>
-    EOF
 
 
 <style type="text/css">
@@ -315,9 +280,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 ##         89.6,  92.8,  96. ,  99.2, 102.4, 105.6, 108.8, 112. , 115.2,
 ##        118.4, 121.6, 124.8, 128. , 131.2, 134.4, 137.6, 140.8, 144. ]), &lt;BarContainer object of 35 artists&gt;)</code></pre>
 <div class="sourceCode" id="cb84"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb84-1"><a href="problema-4.html#cb84-1" tabindex="-1"></a>plt.axvline(media_sobres, color<span class="op">=</span><span class="st">&quot;#e74c3c&quot;</span>, linestyle<span class="op">=</span><span class="st">&quot;--&quot;</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="ss">f&quot;Media: </span><span class="sc">{</span>media_sobres<span class="sc">:.2f}</span><span class="ss"> sobres&quot;</span>)</span></code></pre></div>
-<pre><code>## &lt;matplotlib.lines.Line2D object at 0x73f7e2b4cf40&gt;</code></pre>
+<pre><code>## &lt;matplotlib.lines.Line2D object at 0x78961c0642e0&gt;</code></pre>
 <div class="sourceCode" id="cb86"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb86-1"><a href="problema-4.html#cb86-1" tabindex="-1"></a>plt.axvline(p95_sobres, color<span class="op">=</span><span class="st">&quot;#f39c12&quot;</span>, linestyle<span class="op">=</span><span class="st">&quot;:&quot;</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="ss">f&quot;Percentil 95: </span><span class="sc">{</span>p95_sobres<span class="sc">}</span><span class="ss"> sobres&quot;</span>)</span></code></pre></div>
-<pre><code>## &lt;matplotlib.lines.Line2D object at 0x73f7e4795b70&gt;</code></pre>
+<pre><code>## &lt;matplotlib.lines.Line2D object at 0x78961bdf8d60&gt;</code></pre>
 <div class="sourceCode" id="cb88"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb88-1"><a href="problema-4.html#cb88-1" tabindex="-1"></a>plt.title(<span class="st">&quot;Distribución de Sobres para Completar el Álbum (M = 1000)&quot;</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span></code></pre></div>
 <pre><code>## Text(0.5, 1.0, &#39;Distribución de Sobres para Completar el Álbum (M = 1000)&#39;)</code></pre>
 <div class="sourceCode" id="cb90"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb90-1"><a href="problema-4.html#cb90-1" tabindex="-1"></a>plt.xlabel(<span class="st">&quot;Número de sobres requeridos&quot;</span>)</span></code></pre></div>
@@ -325,7 +290,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb92"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb92-1"><a href="problema-4.html#cb92-1" tabindex="-1"></a>plt.ylabel(<span class="st">&quot;Densidad de probabilidad&quot;</span>)</span></code></pre></div>
 <pre><code>## Text(0, 0.5, &#39;Densidad de probabilidad&#39;)</code></pre>
 <div class="sourceCode" id="cb94"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb94-1"><a href="problema-4.html#cb94-1" tabindex="-1"></a>plt.legend()</span></code></pre></div>
-<pre><code>## &lt;matplotlib.legend.Legend object at 0x73f7e4797f10&gt;</code></pre>
+<pre><code>## &lt;matplotlib.legend.Legend object at 0x78961f3f6b60&gt;</code></pre>
 <div class="sourceCode" id="cb96"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb96-1"><a href="problema-4.html#cb96-1" tabindex="-1"></a>plt.grid(axis<span class="op">=</span><span class="st">&quot;y&quot;</span>, linestyle<span class="op">=</span><span class="st">&quot;--&quot;</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
 <span id="cb96-2"><a href="problema-4.html#cb96-2" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb96-3"><a href="problema-4.html#cb96-3" tabindex="-1"></a>plt.show()</span></code></pre></div>

@@ -6,7 +6,7 @@ site: bookdown::bookdown_site
 documentclass: book
 bibliography: []
 biblio-style: apalike
-link-citations: yes
+link-citations: true
 description: "Solucionario formal y computacional de ejercicios de Simulación de Procesos Estocásticos - Escuela Politécnica Nacional."
 ---
 

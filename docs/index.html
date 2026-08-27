@@ -52,41 +52,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-cat << 'EOF'> copy-button.html
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.querySelectorAll("pre.sourceCode, pre").forEach(function (codeBlock) {
-                if (codeBlock.querySelector(".btn-copy")) return;
-
-                var btn = document.createElement("button");
-                btn.className = "btn-copy";
-                btn.type = "button";
-                btn.innerText = "Copiar";
-
-                codeBlock.style.position = "relative";
-                codeBlock.appendChild(btn);
-
-                var clipboard = new ClipboardJS(btn, {
-                    target: function () {
-                        var code = codeBlock.querySelector("code");
-                        return code ? code : codeBlock;
-                    }
-                });
-
-                clipboard.on("success", function (e) {
-                    btn.innerText = "¡Copiado!";
-                    btn.classList.add("btn-copy-success");
-                    setTimeout(function () {
-                        btn.innerText = "Copiar";
-                        btn.classList.remove("btn-copy-success");
-                    }, 2000);
-                    e.clearSelection();
-                });
-            });
-        });
-    </script>
-    EOF
 
 
 <style type="text/css">
