@@ -3,7 +3,6 @@ estime-mathbben-por-la-generación-de-102-103-y-104-valores-de-n.
 simulación-de-monte-carlo.
 código-de-simulación-en-python.
 resultados-de-la-simulación
-comparación-de-resultados
 ejercicio-3-generador-congruencial-lineal
 es-de-ciclo-óptimo-el-generador-congruencial
 demostración-analítica-teorema-de-hull-dobell
