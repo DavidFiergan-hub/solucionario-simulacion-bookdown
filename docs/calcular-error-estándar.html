@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Ejercicio 4 Ejercicios de Simulación | Bookdown v1</title>
-  <meta name="description" content="Ejercicio 4 Ejercicios de Simulación | Bookdown v1" />
+  <title>Ejercicio 8 Calcular error estándar | Bookdown v1</title>
+  <meta name="description" content="Ejercicio 8 Calcular error estándar | Bookdown v1" />
   <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Ejercicio 4 Ejercicios de Simulación | Bookdown v1" />
+  <meta property="og:title" content="Ejercicio 8 Calcular error estándar | Bookdown v1" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Ejercicio 4 Ejercicios de Simulación | Bookdown v1" />
+  <meta name="twitter:title" content="Ejercicio 8 Calcular error estándar | Bookdown v1" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="simulación-adicional-con-m-100000-para-mejor-precisión.html"/>
-<link rel="next" href="número-de-simulaciones.html"/>
+<link rel="prev" href="estimar-la-probabilidad-py-x.html"/>
+<link rel="next" href="resultados.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -139,77 +139,17 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ejercicios-de-simulación" class="section level1 hasAnchor" number="4">
-<h1><span class="header-section-number">Ejercicio 4</span> Ejercicios de Simulación<a href="ejercicios-de-simulación.html#ejercicios-de-simulaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="sumas-uniformes-y-tiempo-de-parada" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> 1. Sumas Uniformes y Tiempo de Parada<a href="ejercicios-de-simulación.html#sumas-uniformes-y-tiempo-de-parada" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Estimación de <span class="math inline">\(\mathbb{E}[N]\)</span> donde <span class="math inline">\(N = \min\{n : \sum_{i=1}^n U_i &gt; 1\}\)</span>. El valor analítico exacto es <span class="math inline">\(e \approx 2.71828\)</span>.</p>
-</div>
-<div id="integral-doble-monte-carlo" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> 2. Integral Doble Monte Carlo<a href="ejercicios-de-simulación.html#integral-doble-monte-carlo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Aproximación de <span class="math inline">\(I = \int_0^\infty \int_0^x e^{-(x+y)}\,dy\,dx = 0.5\)</span>.</p>
-</div>
-<div id="generador-congruencial" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> 3. Generador Congruencial<a href="ejercicios-de-simulación.html#generador-congruencial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><span class="math display">\[X_{n+1} = (25 X_n + 81) \pmod{1024}\]</span>
-Verificado como ciclo óptimo de período 1024 mediante Hull-Dobell.</p>
-</div>
-<div id="problema-del-coleccionista" class="section level2 hasAnchor" number="4.4">
-<h2><span class="header-section-number">4.4</span> 4. Problema del Coleccionista<a href="ejercicios-de-simulación.html#problema-del-coleccionista" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Álbum de 75 cromos en sobres de 6 unidades mediante simulación de eventos discretos.</p>
-
-<hr />
-<div id="problema2.rmd" class="section level3 hasAnchor" number="4.4.1">
-<h3><span class="header-section-number">4.4.1</span> <code>02-problema2.Rmd</code><a href="ejercicios-de-simulación.html#problema2.rmd" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>```markdown
-# Problema 2</p>
-<ol start="2" style="list-style-type: decimal">
-<li>Use simulaciones para aproximar el valor de la integral <span class="math inline">\(I := \int_{0}^{\infty}\int_{0}^{x}e^{-(x+y)}\,dy\,dx\)</span>, y compare su estimación con el valor exacto de dicha integral[cite: 4].</li>
-</ol>
-</div>
-</div>
-<div id="cálculo-del-valor-exactocite-4." class="section level2 hasAnchor" number="4.5">
-<h2><span class="header-section-number">4.5</span> Cálculo del valor exacto[cite: 4].<a href="ejercicios-de-simulación.html#c%C3%A1lculo-del-valor-exactocite-4." class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Primero calcularemos el valor exacto de <span class="math inline">\(I\)</span>, notemos que[cite: 4]:</p>
-<p><span class="math display">\[I = \int_{0}^{\infty}\left(\int_{0}^{x}e^{-y}\,dy\right)e^{-x}\,dx = \int_{0}^{\infty}(1 - e^{-x})e^{-x}\,dx\]</span>
-<span class="math display">\[= \int_{0}^{\infty}(e^{-x} - e^{-2x})\,dx = \left.\left(-e^{-x} + \frac{1}{2}e^{-2x}\right)\right\vert{}_{0}^{\infty} = 0 - \left(-\frac{1}{2}\right) = \frac{1}{2}\]</span></p>
-<p>En conclusión el valor exacto de <span class="math inline">\(I = 0.5\)</span>[cite: 4].</p>
-</div>
-<div id="interpretación-probabilísticacite-4." class="section level2 hasAnchor" number="4.6">
-<h2><span class="header-section-number">4.6</span> Interpretación probabilística[cite: 4].<a href="ejercicios-de-simulación.html#interpretaci%C3%B3n-probabil%C3%ADsticacite-4." class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Observemos que el integrando es <span class="math inline">\(e^{-(x+y)}\)</span> que es la densidad conjunta de dos variables aleatorias independientes con distribución exponencial de tasa 1, <span class="math inline">\(X \sim \text{Exp}(1)\)</span> e <span class="math inline">\(Y \sim \text{Exp}(1)\)</span>[cite: 4]. Entonces[cite: 4]:</p>
-<p><span class="math display">\[I = \int_{0}^{\infty}\int_{0}^{\infty}e^{-(x+y)}\mathbf{1}_{\{y &lt; x\}}\,dy\,dx = \mathbb{E}[\mathbf{1}_{\{Y &lt; X\}}]\]</span></p>
-</div>
-<div id="simulación-de-monte-carlocite-4." class="section level2 hasAnchor" number="4.7">
-<h2><span class="header-section-number">4.7</span> Simulación de Monte Carlo[cite: 4].<a href="ejercicios-de-simulación.html#simulaci%C3%B3n-de-monte-carlocite-4." class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li><p><strong>Algoritmo para generar un valor de <span class="math inline">\(\mathbf{1}_{\{Y &lt; X\}}\)</span></strong>[cite: 4]<br />
-Para simular un valor de <span class="math inline">\(\mathbf{1}_{\{Y &lt; X\}}\)</span>, seguimos el siguiente procedimiento[cite: 4]:</p>
-<ol style="list-style-type: lower-alpha">
-<li>Generar <span class="math inline">\(U_{1} \sim \text{Unif}(0,1)\)</span> y <span class="math inline">\(U_{2} \sim \text{Unif}(0,1)\)</span>[cite: 4].</li>
-<li><span class="math inline">\(X \leftarrow -\ln(U_{1})\)</span> y <span class="math inline">\(Y \leftarrow -\ln(U_{2})\)</span>[cite: 4].</li>
-<li>Devolver <span class="math inline">\(\mathbf{1}_{\{Y &lt; X\}}\)</span>[cite: 4].</li>
-</ol></li>
-<li><p><strong>Estimador</strong>[cite: 4]<br />
-Generamos <span class="math inline">\(N\)</span> pares independientes <span class="math inline">\((X_{1}, Y_{1}), \dots, (X_{N}, Y_{N})\)</span>, y calculamos la media muestral[cite: 4]:
-<span class="math display">\[\hat{I}_{N} = \frac{1}{N}\sum_{i=1}^{N}\mathbf{1}_{\{Y_{i} \le X_{i}\}}\]</span></p></li>
-<li><p><strong>Error estándar</strong>[cite: 4]<br />
-<span class="math display">\[\text{Error estándar} = \sqrt{\frac{\hat{I}_{N}(1 - \hat{I}_{N})}{N}}\]</span></p></li>
-</ul>
-</div>
-<div id="código-de-simulación-en-pythoncite-4." class="section level2 hasAnchor" number="4.8">
-<h2><span class="header-section-number">4.8</span> Código de simulación en Python[cite: 4].<a href="ejercicios-de-simulación.html#c%C3%B3digo-de-simulaci%C3%B3n-en-pythoncite-4." class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>```python
-import numpy as np</p>
-</div>
+<div id="calcular-error-estándar" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Ejercicio 8</span> Calcular error estándar<a href="calcular-error-estándar.html#calcular-error-est%C3%A1ndar" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>error_est = np.sqrt(estimacion * (1 - estimacion) / N)</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="simulación-adicional-con-m-100000-para-mejor-precisión.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="número-de-simulaciones.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="estimar-la-probabilidad-py-x.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="resultados.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

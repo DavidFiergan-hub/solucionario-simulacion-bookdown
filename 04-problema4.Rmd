@@ -1,0 +1,63 @@
+---
+
+### `04-problema4.Rmd`
+
+```markdown
+# Problema 4
+
+4. **Variación del Problema del Coleccionista.** Supongamos que tenemos un álbum con 75 cromos y para completarlo hay que comprar sobres con 6 cromos[cite: 4]. A partir de 1000 simulaciones de coleccionistas de cromos, obtener una aproximación por simulación a la respuesta de las siguientes preguntas[cite: 4]:
+
+## Simulación de Monte Carlo[cite: 4].
+
+* **Algoritmo para simular un coleccionista**
+  Para cada réplica individual del coleccionista:
+  1) Inicializar el álbum vacío $A \leftarrow \emptyset$ y el contador de sobres comprados $S \leftarrow 0$.
+  2) Mientras el número de cromos únicos $\vert{}A\vert{} < 75$:
+     2.1) Generar $6$ cromos aleatorios uniformes $c_1, \dots, c_6 \in \{1, 2, \dots, 75\}$.
+     2.2) Actualizar el álbum: $A \leftarrow A \cup \{c_1, \dots, c_6\}$.
+     2.3) Incrementar el contador: $S \leftarrow S + 1$.
+  3) Devolver $S$.
+
+* **Estimadores de Monte Carlo**
+  Se ejecutan $M = 1000$ simulaciones obteniendo $S_1, S_2, \dots, S_M$:
+  * **Media muestral de sobres:** $\hat{E}[S] = \frac{1}{M}\sum_{j=1}^M S_j$
+  * **Gasto medio:** $\hat{E}[\text{Gasto}] = \hat{E}[S] \times 0.80$
+  * **Error estándar:** $\text{SE} = \frac{S_S}{\sqrt{M}}$
+  * **Percentil 95:** Valor $s_{0.95}$ tal que $P(S \le s_{0.95}) \ge 0.95$.
+
+---
+
+## Código de simulación en Python[cite: 4].
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+def simular_un_coleccionista(total_cromos=75, cromos_por_sobre=6):
+    """Simula el proceso de llenar un álbum comprando sobres."""
+    album = set()
+    sobres_comprados = 0
+    while len(album) < total_cromos:
+        # 6 cromos por sobre con reemplazo
+        sobre = np.random.randint(1, total_cromos + 1, size=cromos_por_sobre)
+        album.update(sobre)
+        sobres_comprados += 1
+    return sobres_comprados
+
+# Parametrización
+M = 1000
+np.random.seed(42)
+resultados_sobres = np.array([simular_un_coleccionista() for _ in range(M)])
+
+# Estimaciones
+media_sobres = np.mean(resultados_sobres)
+error_est = np.std(resultados_sobres, ddof=1) / np.sqrt(M)
+gasto_medio = media_sobres * 0.80
+p95_sobres = int(np.ceil(np.percentile(resultados_sobres, 95)))
+
+print("Resultados de la Simulación (M = 1000)")
+print("-" * 50)
+print(f"Número medio de sobres: {media_sobres:.2f}")
+print(f"Error estándar:         {error_est:.2f}")
+print(f"Gasto medio estimado:   ${gasto_medio:.2f}")
+print(f"Mínimo sobres (95%):    {p95_sobres}")

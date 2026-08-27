@@ -1,0 +1,68 @@
+# Problema 1
+
+1. Sea $(U_{n})_{n\in\mathbb{N}}$ una sucesión de v.a.i.i.d. a la v.a. $\mathcal{U}\sim\mathcal{U}(0,1)$. Definimos el número de números aleatorios que deben sumarse para superar 1 como:
+
+$$N := \min\left\{n \in \mathbb{N} : \sum_{i=1}^{n} U_{i} > 1\right\}$$
+
+## 1.1. Estime $\mathbb{E}[N]$ por la generación de $10^2$, $10^3$ y $10^4$ valores de $N$.
+
+### Simulación de Monte Carlo.
+
+* **Algoritmo para generar un valor de $N$**
+  Para simular un valor de $N$, seguimos el siguiente procedimiento:
+  1) Inicializar $n = 0$ y $S = 0$.
+  2) Mientras $S \le 1$:
+     2.1) Generar $U \sim \mathcal{U}(0,1)$.
+     2.2) $S \leftarrow S + U$.
+     2.3) $n \leftarrow n + 1$.
+  3) Devolver $n$.
+
+* **Estimador de $\mathbb{E}[N]$**
+  Generamos $M$ valores independientes de $N$, denotados como $N_{1}, N_{2}, \dots, N_{M}$, y calculamos la media muestral:
+  $$\hat{E}[N] = \frac{1}{M}\sum_{j=1}^{M}N_{j}$$
+
+* **Error estándar de la estimación**
+  $$\text{Error estándar} = \frac{S_N}{\sqrt{M}}$$
+
+### Código de simulación en Python.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+def generar_N():
+    """Genera un valor de N."""
+    suma = 0.0
+    n = 0
+    while suma <= 1.0:
+        suma += np.random.random()
+        n += 1
+    return n
+
+def estimar_E_N(M):
+    """Estima E[N] usando M simulaciones."""
+    valores_N = np.array([generar_N() for _ in range(M)])
+    estimacion = np.mean(valores_N)
+    error_est = np.std(valores_N, ddof=1) / np.sqrt(M)
+    return estimacion, error_est, valores_N
+
+# Tamaños de muestra a probar
+muestras = [100, 1000, 10000]
+
+print("Simulación para estimar E[N]")
+print("-" * 60)
+print(f"{'M':<10} {'Estimación':<15} {'Error estándar':<15}")
+print("-" * 60)
+
+for M in muestras:
+    estimacion, error, valores = estimar_E_N(M)
+    print(f"{M:<10} {estimacion:<15.6f} {error:<15.6f}")
+
+# Simulación adicional con M = 100000 para mejor precisión
+M_grande = 100000
+estimacion_final, error_final, valores_final = estimar_E_N(M_grande)
+
+print("-" * 60)
+print(f"\nCon M = {M_grande}:")
+print(f"Estimación final: {estimacion_final:.6f}")
+print(f"Error estándar: {error_final:.6f}")
