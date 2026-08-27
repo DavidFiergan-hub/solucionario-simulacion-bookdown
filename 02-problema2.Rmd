@@ -1,56 +1,75 @@
-# Integración Numérica Doble por Enfoque Probabilístico
+# Problema 2
 
 2. Use simulaciones para aproximar el valor de la integral $I := \int_{0}^{\infty}\int_{0}^{x}e^{-(x+y)}\,dy\,dx$, y compare su estimación con el valor exacto de dicha integral.
 
-## Cálculo del valor exacto
+## Cálculo del valor exacto.
 
-Calculando analíticamente el valor de $I$:
+Primero calcularemos el valor exacto de $I$, notemos que:
 
 $$I = \int_{0}^{\infty}\left(\int_{0}^{x}e^{-y}\,dy\right)e^{-x}\,dx = \int_{0}^{\infty}(1 - e^{-x})e^{-x}\,dx$$
-$$= \int_{0}^{\infty}(e^{-x} - e^{-2x})\,dx = \left.\left(-e^{-x} + \frac{1}{2}e^{-2x}\right)\right|_{0}^{\infty} = 0 - \left(-\frac{1}{2}\right) = \frac{1}{2}$$
+$$= \int_{0}^{\infty}(e^{-x} - e^{-2x})\,dx = \left.\left(-e^{-x} + \frac{1}{2}e^{-2x}\right)\right\vert{}_{0}^{\infty} = 0 - \left(-\frac{1}{2}\right) = \frac{1}{2}$$
 
-En conclusión el valor exacto es $I = 0.5$.
+En conclusión el valor exacto de $I = 0.5$.
 
-## Interpretación probabilística
+## Interpretación probabilística.
 
-El integrando $e^{-(x+y)}$ es la densidad conjunta de dos variables aleatorias independientes exponenciales $X \sim \text{Exp}(1)$ e $Y \sim \text{Exp}(1)$. Por tanto:
+Observemos que el integrando es $e^{-(x+y)}$ que es la densidad conjunta de dos variables aleatorias independientes con distribución exponencial de tasa 1, $X \sim \text{Exp}(1)$ e $Y \sim \text{Exp}(1)$. Entonces:
 
-$$I = \int_{0}^{\infty}\int_{0}^{\infty}e^{-(x+y)}\mathbf{1}_{\{y < x\}}\,dy\,dx = \mathbb{E}[\mathbf{1}_{\{Y < X\}}] = P(Y < X)$$
+$$I = \int_{0}^{\infty}\int_{0}^{\infty}e^{-(x+y)}\mathbf{1}_{\{y < x\}}\,dy\,dx = \mathbb{E}[\mathbf{1}_{\{Y < X\}}]$$
 
-## Simulación de Monte Carlo
+## Simulación de Monte Carlo.
 
-* **Algoritmo de generación:**  
-  1) Generar $U_{1}, U_{2} \sim \mathcal{U}(0,1)$.  
-  2) Aplicar transformada inversa: $X \leftarrow -\ln(U_{1})$ y $Y \leftarrow -\ln(U_{2})$.  
-  3) Devolver la variable indicadora $\mathbf{1}_{\{Y < X\}}$.
+* **Algoritmo para generar un valor de $\mathbf{1}_{\{Y < X\}}$**  
+  Para simular un valor de $\mathbf{1}_{\{Y < X\}}$, seguimos el siguiente procedimiento:  
+  a) Generar $U_{1} \sim \text{Unif}(0,1)$ y $U_{2} \sim \text{Unif}(0,1)$.  
+  b) $X \leftarrow -\ln(U_{1})$ y $Y \leftarrow -\ln(U_{2})$.  
+  c) Devolver $\mathbf{1}_{\{Y < X\}}$.
 
-* **Estimador y error estándar:**
-  $$\hat{I}_{N} = \frac{1}{N}\sum_{i=1}^{N}\mathbf{1}_{\{Y_{i} \le X_{i}\}}, \qquad \text{Error estándar} = \sqrt{\frac{\hat{I}_{N}(1 - \hat{I}_{N})}{N}}$$
+* **Estimador**  
+  Generamos $N$ pares independientes $(X_{1}, Y_{1}), \dots, (X_{N}, Y_{N})$, y calculamos la media muestral:  
+  $$\hat{I}_{N} = \frac{1}{N}\sum_{i=1}^{N}\mathbf{1}_{\{Y_{i} \le X_{i}\}}$$
 
-## Código de simulación en Python
+* **Error estándar**  
+  $$\text{Error estándar} = \sqrt{\frac{\hat{I}_{N}(1 - \hat{I}_{N})}{N}}$$
+
+## Código de simulación en Python.
 
 ```python
 import numpy as np
 
+# Número de simulaciones
 N = 1000000
 
+# Generar variables exponenciales (tasa 1)
 X = -np.log(np.random.rand(N))
 Y = -np.log(np.random.rand(N))
 
+# Estimar la probabilidad P(Y <= X)
 estimacion = np.mean(Y <= X)
+
+# Calcular error estándar
 error_est = np.sqrt(estimacion * (1 - estimacion) / N)
 
+# Resultados
 print("Valor exacto: 0.5")
 print(f"Estimación Monte Carlo: {estimacion:.6f}")
-print(f"Error estándar:         {error_est:.6f}")
-print(f"Error absoluto:         {abs(estimacion - 0.5):.6f}")
+print(f"Error estándar: {error_est:.6f}")
+print(f"Error absoluto: {abs(estimacion - 0.5):.6f}")
 ```
 
 ## Resultados de la simulación
 
-| Método | Valor | Error absoluto | Error relativo | Error estándar |
-|:---|:---:|:---:|:---:|:---:|
-| Valor exacto | $0.5$ | — | — | — |
-| Monte Carlo ($N = 10^{6}$) | $0.500123$ | $1.23 \times 10^{-4}$ | $2.46 \times 10^{-4}$ | $0.000500$ |
+Al ejecutar el código con $N = 10^6$ se obtiene una salida similar a:
+* **Estimación Monte Carlo:** $0.500123$  
+* **Error estándar:** $0.000500$  
+* **Valor exacto:** $0.5$  
+* **Error absoluto:** $0.000123$  
 
-**Interpretación:** La integral exacta vale $\frac{1}{2}$. Mediante simulación de Monte Carlo obtenemos una estimación muy cercana al valor exacto.
+### Comparación de resultados
+
+| Método | Valor | Error absoluto | Error relativo |
+|:---|:---:|:---:|:---:|
+| Valor exacto | $0.5$ | — | — |
+| Monte Carlo ($N = 10^{6}$) | $0.500123$ | $1.23 \times 10^{-4}$ | $2.46 \times 10^{-4}$ |
+
+**Interpretación:** La integral exacta vale $\frac{1}{2}$. Mediante simulación de Monte Carlo, interpretando la integral como la probabilidad de que una variable exponencial sea menor que otra independiente, obtenemos una estimación muy cercana al valor exacto. El error disminuye como $O(1/\sqrt{N})$ consistente con la teoría de Monte Carlo.

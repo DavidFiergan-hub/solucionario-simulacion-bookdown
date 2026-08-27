@@ -8,6 +8,3 @@ rmd_files: [
   "03-problema3.Rmd",
   "04-problema4.Rmd"
 ]
-language:
-  ui:
-    chapter_name: "Problema "

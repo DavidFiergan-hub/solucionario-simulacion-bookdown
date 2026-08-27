@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Bookdown v1</title>
-  <meta name="description" content="Page not found | Bookdown v1" />
+  <title>3 Problema 3 | Bookdown v1</title>
+  <meta name="description" content="3 Problema 3 | Bookdown v1" />
   <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Bookdown v1" />
+  <meta property="og:title" content="3 Problema 3 | Bookdown v1" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Bookdown v1" />
+  <meta name="twitter:title" content="3 Problema 3 | Bookdown v1" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="problema-2.html"/>
+<link rel="next" href="problema-4.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -202,19 +202,99 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="problema-3" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Problema 3<a href="problema-3.html#problema-3" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ol start="3" style="list-style-type: decimal">
+<li>Dado el generador congruencial de números pseudoaleatorios definido por:</li>
+</ol>
+<p><span class="math display">\[X_{n+1} = (25 X_{n} + 81) \pmod{1024}, \qquad U_{n} := \frac{X_{n}}{1024}, \quad n \in \mathbb{N}\]</span></p>
+<div id="es-de-ciclo-óptimo-el-siguiente-generador-congruencial" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> 3.1. ¿Es de ciclo óptimo el siguiente generador congruencial?<a href="problema-3.html#es-de-ciclo-%C3%B3ptimo-el-siguiente-generador-congruencial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="demostración-analítica-teorema-de-hull-dobell." class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Demostración analítica (Teorema de Hull-Dobell).<a href="problema-3.html#demostraci%C3%B3n-anal%C3%ADtica-teorema-de-hull-dobell." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Un generador congruencial lineal de la forma <span class="math inline">\(X_{n+1} = (aX_n + c) \pmod m\)</span> tiene período completo (<span class="math inline">\(m = 1024\)</span>) si y solo si se verifican las tres condiciones siguientes:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>El incremento <span class="math inline">\(c\)</span> y el módulo <span class="math inline">\(m\)</span> son primos relativos:</strong><br />
+<span class="math display">\[\gcd(c, m) = \gcd(81, 1024) = \gcd(3^4, 2^{10}) = 1\]</span>
+Se cumple la condición.</p></li>
+<li><p><strong>Todo factor primo de <span class="math inline">\(m\)</span> divide a <span class="math inline">\(a - 1\)</span>:</strong><br />
+El único factor primo de <span class="math inline">\(m = 1024 = 2^{10}\)</span> es <span class="math inline">\(p = 2\)</span>.<br />
+<span class="math display">\[a - 1 = 25 - 1 = 24\]</span>
+Como <span class="math inline">\(24\)</span> es divisible por <span class="math inline">\(2\)</span> (<span class="math inline">\(2 \mid 24\)</span>), se cumple la condición.</p></li>
+<li><p><strong>Si <span class="math inline">\(m\)</span> es múltiplo de 4, entonces <span class="math inline">\(a - 1\)</span> es múltiplo de 4:</strong><br />
+Dado que <span class="math inline">\(4 \mid 1024\)</span>, verificamos:<br />
+<span class="math display">\[4 \mid 24\]</span>
+Se cumple la condición.</p></li>
+</ol>
+<p><strong>Conclusión:</strong> El generador congruencial <strong>sí es de ciclo óptimo</strong> y su período es <span class="math inline">\(m = 1024\)</span>.</p>
+<hr />
+</div>
+</div>
+<div id="tomando-como-semilla-x_0-40-cuánto-vale-el-valor-de-u_51202" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> 3.2. Tomando como semilla <span class="math inline">\(X_0 := 40\)</span>, ¿cuánto vale el valor de <span class="math inline">\(U_{51202}\)</span>?<a href="problema-3.html#tomando-como-semilla-x_0-40-cu%C3%A1nto-vale-el-valor-de-u_51202" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="demostración-analítica.-1" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Demostración analítica.<a href="problema-3.html#demostraci%C3%B3n-anal%C3%ADtica.-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dado que el período completo es <span class="math inline">\(m = 1024\)</span>, los valores de la sucesión se repiten periódicamente cada <span class="math inline">\(1024\)</span> pasos:</p>
+<p><span class="math display">\[51202 \pmod{1024} = 51202 - 50 \times 1024 = 2\]</span></p>
+<p>Esto implica que <span class="math inline">\(X_{51202} = X_{2}\)</span>. Calculamos paso a paso:
+1. Para <span class="math inline">\(n = 0\)</span>:<br />
+<span class="math display">\[X_1 = (25 \times 40 + 81) \pmod{1024} = 1081 \pmod{1024} = 57\]</span>
+2. Para <span class="math inline">\(n = 1\)</span>:<br />
+<span class="math display">\[X_2 = (25 \times 57 + 81) \pmod{1024} = 1506 \pmod{1024} = 482\]</span></p>
+<p>Calculando el número pseudoaleatorio normalizado:</p>
+<p><span class="math display">\[U_{51202} = \frac{X_2}{1024} = \frac{482}{1024} = \frac{241}{512} = 0.470703125\]</span></p>
+<hr />
+</div>
+</div>
+<div id="código-de-verificación-en-python." class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Código de verificación en Python.<a href="problema-3.html#c%C3%B3digo-de-verificaci%C3%B3n-en-python." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="problema-3.html#cb3-1" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">25</span></span>
+<span id="cb3-2"><a href="problema-3.html#cb3-2" tabindex="-1"></a>c <span class="op">=</span> <span class="dv">81</span></span>
+<span id="cb3-3"><a href="problema-3.html#cb3-3" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">1024</span></span>
+<span id="cb3-4"><a href="problema-3.html#cb3-4" tabindex="-1"></a>x0 <span class="op">=</span> <span class="dv">40</span></span>
+<span id="cb3-5"><a href="problema-3.html#cb3-5" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="problema-3.html#cb3-6" tabindex="-1"></a><span class="co"># Verificación computacional del período</span></span>
+<span id="cb3-7"><a href="problema-3.html#cb3-7" tabindex="-1"></a>visitados <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb3-8"><a href="problema-3.html#cb3-8" tabindex="-1"></a>x <span class="op">=</span> x0</span>
+<span id="cb3-9"><a href="problema-3.html#cb3-9" tabindex="-1"></a>periodo <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-10"><a href="problema-3.html#cb3-10" tabindex="-1"></a><span class="cf">while</span> x <span class="kw">not</span> <span class="kw">in</span> visitados:</span>
+<span id="cb3-11"><a href="problema-3.html#cb3-11" tabindex="-1"></a>    visitados.add(x)</span>
+<span id="cb3-12"><a href="problema-3.html#cb3-12" tabindex="-1"></a>    x <span class="op">=</span> (a <span class="op">*</span> x <span class="op">+</span> c) <span class="op">%</span> m</span>
+<span id="cb3-13"><a href="problema-3.html#cb3-13" tabindex="-1"></a>    periodo <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb3-14"><a href="problema-3.html#cb3-14" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="problema-3.html#cb3-15" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Longitud del período obtenido: </span><span class="sc">{</span>periodo<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb3-16"><a href="problema-3.html#cb3-16" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;¿Es de ciclo óptimo?: </span><span class="sc">{</span>periodo <span class="op">==</span> m<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb3-17"><a href="problema-3.html#cb3-17" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="problema-3.html#cb3-18" tabindex="-1"></a><span class="co"># Cálculo del término 51202</span></span>
+<span id="cb3-19"><a href="problema-3.html#cb3-19" tabindex="-1"></a>x_n <span class="op">=</span> x0</span>
+<span id="cb3-20"><a href="problema-3.html#cb3-20" tabindex="-1"></a>pasos <span class="op">=</span> <span class="dv">51202</span> <span class="op">%</span> m</span>
+<span id="cb3-21"><a href="problema-3.html#cb3-21" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(pasos):</span>
+<span id="cb3-22"><a href="problema-3.html#cb3-22" tabindex="-1"></a>    x_n <span class="op">=</span> (a <span class="op">*</span> x_n <span class="op">+</span> c) <span class="op">%</span> m</span>
+<span id="cb3-23"><a href="problema-3.html#cb3-23" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="problema-3.html#cb3-24" tabindex="-1"></a>u_n <span class="op">=</span> x_n <span class="op">/</span> m</span>
+<span id="cb3-25"><a href="problema-3.html#cb3-25" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="problema-3.html#cb3-26" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Valor de X_51202: </span><span class="sc">{</span>x_n<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb3-27"><a href="problema-3.html#cb3-27" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Valor de U_51202: </span><span class="sc">{</span>u_n<span class="sc">:.9f}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<div id="resultados" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Resultados<a href="problema-3.html#resultados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>Período:</strong> <span class="math inline">\(1024\)</span> (Ciclo óptimo verificado).<br />
+</li>
+<li><strong>Valor de <span class="math inline">\(X_{51202}\)</span>:</strong> <span class="math inline">\(482\)</span>.<br />
+</li>
+<li><strong>Valor de <span class="math inline">\(U_{51202}\)</span>:</strong> <span class="math inline">\(0.470703125\)</span>.</li>
+</ul>
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="problema-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="problema-4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

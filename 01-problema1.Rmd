@@ -8,20 +8,20 @@ $$N := \min\left\{n \in \mathbb{N} : \sum_{i=1}^{n} U_{i} > 1\right\}$$
 
 ### Simulación de Monte Carlo.
 
-* **Algoritmo para generar un valor de $N$**
-  Para simular un valor de $N$, seguimos el siguiente procedimiento:
-  1) Inicializar $n = 0$ y $S = 0$.
-  2) Mientras $S \le 1$:
-     2.1) Generar $U \sim \mathcal{U}(0,1)$.
-     2.2) $S \leftarrow S + U$.
-     2.3) $n \leftarrow n + 1$.
+* **Algoritmo para generar un valor de $N$**  
+  Para simular un valor de $N$, seguimos el siguiente procedimiento:  
+  1) Inicializar $n = 0$ y $S = 0$.  
+  2) Mientras $S \le 1$:  
+     2.1) Generar $U \sim \mathcal{U}(0,1)$.  
+     2.2) $S \leftarrow S + U$.  
+     2.3) $n \leftarrow n + 1$.  
   3) Devolver $n$.
 
-* **Estimador de $\mathbb{E}[N]$**
-  Generamos $M$ valores independientes de $N$, denotados como $N_{1}, N_{2}, \dots, N_{M}$, y calculamos la media muestral:
+* **Estimador de $\mathbb{E}[N]$**  
+  Generamos $M$ valores independientes de $N$, denotados como $N_{1}, N_{2}, \dots, N_{M}$, y calculamos la media muestral:  
   $$\hat{E}[N] = \frac{1}{M}\sum_{j=1}^{M}N_{j}$$
 
-* **Error estándar de la estimación**
+* **Error estándar de la estimación**  
   $$\text{Error estándar} = \frac{S_N}{\sqrt{M}}$$
 
 ### Código de simulación en Python.
@@ -66,3 +66,41 @@ print("-" * 60)
 print(f"\nCon M = {M_grande}:")
 print(f"Estimación final: {estimacion_final:.6f}")
 print(f"Error estándar: {error_final:.6f}")
+```
+
+### Resultados de la simulación
+
+Al ejecutar el código, se obtienen resultados similares a:
+
+| $M$ | Estimación | Error estándar |
+|:---|:---:|:---:|
+| $100$ | $2.740000$ | $0.086200$ |
+| $1000$ | $2.711000$ | $0.027540$ |
+| $10000$ | $2.717800$ | $0.008710$ |
+
+Con $M = 100000$:  
+**Estimación final:** $2.718350$  
+**Error estándar:** $0.002756$
+
+---
+
+## 1.2. ¿Cuál es el valor de $\mathbb{E}[N]$?
+
+### Demostración analítica.
+
+Definimos para $x \ge 0$:  
+$$N(x) := \min\left\{n \in \mathbb{N} : \sum_{i=1}^{n} U_{i} > x\right\} \quad \text{y} \quad m(x) := \mathbb{E}[N(x)]$$
+
+Claramente, $\mathbb{E}[N] = m(1)$. Condicionando sobre $U_{1}$:
+
+$$m(x) = \mathbb{E}[\mathbb{E}[N(x) \mid U_{1}]] = 1 + \int_{0}^{x} m(x - u)\,du, \quad 0 \le x \le 1$$
+
+Haciendo el cambio de variable $v = x - u$:
+
+$$m(x) = 1 + \int_{0}^{x} m(v)\,dv \implies m'(x) = m(x) \implies m(x) = C_{1}e^{x}$$
+
+Como $m(0) = 1$ entonces $C_{1} = 1$. Por lo tanto:
+
+$$m(x) = e^{x}, \quad 0 \le x \le 1$$
+
+Evaluando en $x = 1$, concluimos $\mathbb{E}[N] = e \approx 2.718281828$.

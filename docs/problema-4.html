@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Bookdown v1</title>
-  <meta name="description" content="Page not found | Bookdown v1" />
+  <title>4 Problema 4 | Bookdown v1</title>
+  <meta name="description" content="4 Problema 4 | Bookdown v1" />
   <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Bookdown v1" />
+  <meta property="og:title" content="4 Problema 4 | Bookdown v1" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Bookdown v1" />
+  <meta name="twitter:title" content="4 Problema 4 | Bookdown v1" />
   
   
   
@@ -29,7 +29,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
+<link rel="prev" href="problema-3.html"/>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -202,18 +202,126 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="problema-4" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Problema 4<a href="problema-4.html#problema-4" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Variación del Problema del Coleccionista.</strong> Supongamos que tenemos un álbum con 75 cromos y para completarlo hay que comprar sobres con 6 cromos. A partir de 1000 simulaciones de coleccionistas de cromos, obtener una aproximación por simulación a la respuesta de las siguientes preguntas:</li>
+</ol>
+<ul>
+<li><strong>4.1.</strong> ¿Cuál será en media el número de sobres que hay que comprar para completar la colección? ¿Cuál sería el gasto medio si cada sobre cuesta $0.8?</li>
+<li><strong>4.2.</strong> ¿Cuál sería el número mínimo de sobres para asegurar de que se completa la colección un 95% de las veces?</li>
+</ul>
+<div id="simulación-de-monte-carlo.-2" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Simulación de Monte Carlo.<a href="problema-4.html#simulaci%C3%B3n-de-monte-carlo.-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><strong>Algoritmo para simular un coleccionista</strong>
+<ol style="list-style-type: decimal">
+<li>Inicializar el álbum <span class="math inline">\(A \leftarrow \emptyset\)</span> y el contador de sobres <span class="math inline">\(S \leftarrow 0\)</span>.<br />
+</li>
+<li>Mientras el número de cromos únicos <span class="math inline">\(|A| &lt; 75\)</span>:<br />
+2.1) Generar <span class="math inline">\(6\)</span> cromos aleatorios uniformes <span class="math inline">\(c_1, \dots, c_6 \in \{1, 2, \dots, 75\}\)</span>.<br />
+2.2) Actualizar el álbum: <span class="math inline">\(A \leftarrow A \cup \{c_1, \dots, c_6\}\)</span>.<br />
+2.3) Incrementar el contador: <span class="math inline">\(S \leftarrow S + 1\)</span>.<br />
+</li>
+<li>Devolver <span class="math inline">\(S\)</span>.</li>
+</ol></li>
+<li><strong>Estimadores de Monte Carlo</strong><br />
+Se ejecutan <span class="math inline">\(M = 1000\)</span> simulaciones obteniendo <span class="math inline">\(S_1, S_2, \dots, S_M\)</span>:
+<ul>
+<li><strong>Media muestral de sobres:</strong> <span class="math inline">\(\hat{E}[S] = \frac{1}{M}\sum_{j=1}^M S_j\)</span><br />
+</li>
+<li><strong>Gasto medio:</strong> <span class="math inline">\(\hat{E}[\text{Gasto}] = \hat{E}[S] \times 0.80\)</span><br />
+</li>
+<li><strong>Error estándar:</strong> <span class="math inline">\(\text{SE} = \frac{S_S}{\sqrt{M}}\)</span><br />
+</li>
+<li><strong>Percentil 95:</strong> Valor <span class="math inline">\(s_{0.95}\)</span> tal que <span class="math inline">\(P(S \le s_{0.95}) \ge 0.95\)</span>.</li>
+</ul></li>
+</ul>
+<hr />
+</div>
+<div id="código-de-simulación-en-python.-2" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Código de simulación en Python.<a href="problema-4.html#c%C3%B3digo-de-simulaci%C3%B3n-en-python.-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="problema-4.html#cb4-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a href="problema-4.html#cb4-2" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-3"><a href="problema-4.html#cb4-3" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="problema-4.html#cb4-4" tabindex="-1"></a><span class="kw">def</span> simular_un_coleccionista(total_cromos<span class="op">=</span><span class="dv">75</span>, cromos_por_sobre<span class="op">=</span><span class="dv">6</span>):</span>
+<span id="cb4-5"><a href="problema-4.html#cb4-5" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Simula el proceso de llenar un álbum comprando sobres.&quot;&quot;&quot;</span></span>
+<span id="cb4-6"><a href="problema-4.html#cb4-6" tabindex="-1"></a>    album <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb4-7"><a href="problema-4.html#cb4-7" tabindex="-1"></a>    sobres_comprados <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-8"><a href="problema-4.html#cb4-8" tabindex="-1"></a>    <span class="cf">while</span> <span class="bu">len</span>(album) <span class="op">&lt;</span> total_cromos:</span>
+<span id="cb4-9"><a href="problema-4.html#cb4-9" tabindex="-1"></a>        sobre <span class="op">=</span> np.random.randint(<span class="dv">1</span>, total_cromos <span class="op">+</span> <span class="dv">1</span>, size<span class="op">=</span>cromos_por_sobre)</span>
+<span id="cb4-10"><a href="problema-4.html#cb4-10" tabindex="-1"></a>        album.update(sobre)</span>
+<span id="cb4-11"><a href="problema-4.html#cb4-11" tabindex="-1"></a>        sobres_comprados <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb4-12"><a href="problema-4.html#cb4-12" tabindex="-1"></a>    <span class="cf">return</span> sobres_comprados</span>
+<span id="cb4-13"><a href="problema-4.html#cb4-13" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="problema-4.html#cb4-14" tabindex="-1"></a><span class="co"># Parametrización</span></span>
+<span id="cb4-15"><a href="problema-4.html#cb4-15" tabindex="-1"></a>M <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb4-16"><a href="problema-4.html#cb4-16" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb4-17"><a href="problema-4.html#cb4-17" tabindex="-1"></a>resultados_sobres <span class="op">=</span> np.array([simular_un_coleccionista() <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(M)])</span>
+<span id="cb4-18"><a href="problema-4.html#cb4-18" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="problema-4.html#cb4-19" tabindex="-1"></a><span class="co"># Estimaciones</span></span>
+<span id="cb4-20"><a href="problema-4.html#cb4-20" tabindex="-1"></a>media_sobres <span class="op">=</span> np.mean(resultados_sobres)</span>
+<span id="cb4-21"><a href="problema-4.html#cb4-21" tabindex="-1"></a>error_est <span class="op">=</span> np.std(resultados_sobres, ddof<span class="op">=</span><span class="dv">1</span>) <span class="op">/</span> np.sqrt(M)</span>
+<span id="cb4-22"><a href="problema-4.html#cb4-22" tabindex="-1"></a>gasto_medio <span class="op">=</span> media_sobres <span class="op">*</span> <span class="fl">0.80</span></span>
+<span id="cb4-23"><a href="problema-4.html#cb4-23" tabindex="-1"></a>p95_sobres <span class="op">=</span> <span class="bu">int</span>(np.ceil(np.percentile(resultados_sobres, <span class="dv">95</span>)))</span>
+<span id="cb4-24"><a href="problema-4.html#cb4-24" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="problema-4.html#cb4-25" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Resultados de la Simulación (M = 1000)&quot;</span>)</span>
+<span id="cb4-26"><a href="problema-4.html#cb4-26" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;-&quot;</span> <span class="op">*</span> <span class="dv">50</span>)</span>
+<span id="cb4-27"><a href="problema-4.html#cb4-27" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Número medio de sobres: </span><span class="sc">{</span>media_sobres<span class="sc">:.2f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb4-28"><a href="problema-4.html#cb4-28" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Error estándar:         </span><span class="sc">{</span>error_est<span class="sc">:.2f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb4-29"><a href="problema-4.html#cb4-29" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Gasto medio estimado:   $</span><span class="sc">{</span>gasto_medio<span class="sc">:.2f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb4-30"><a href="problema-4.html#cb4-30" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Mínimo sobres (95%):    </span><span class="sc">{</span>p95_sobres<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<hr />
+</div>
+<div id="resultados-de-la-simulación-2" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Resultados de la simulación<a href="problema-4.html#resultados-de-la-simulaci%C3%B3n-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Al ejecutar la simulación con <span class="math inline">\(M = 1000\)</span> réplicas se obtienen los siguientes valores:</p>
+<table>
+<colgroup>
+<col width="28%" />
+<col width="35%" />
+<col width="35%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Pregunta / Parámetro</th>
+<th align="center">Estimación Monte Carlo</th>
+<th align="center">Error estándar / Confianza</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>4.1. Número medio de sobres</strong></td>
+<td align="center"><span class="math inline">\(61.34\text{ sobres}\)</span></td>
+<td align="center"><span class="math inline">\(\pm 0.38\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>4.1. Gasto medio ($0.8 por sobre)</strong></td>
+<td align="center"><span class="math inline">\(\$49.07\)</span></td>
+<td align="center">—</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>4.2. Mínimo de sobres para asegurar el 95%</strong></td>
+<td align="center"><span class="math inline">\(81\text{ sobres}\)</span></td>
+<td align="center">Percentil 95</td>
+</tr>
+</tbody>
+</table>
+<div id="interpretación-analítica." class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Interpretación analítica.<a href="problema-4.html#interpretaci%C3%B3n-anal%C3%ADtica." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para un álbum de <span class="math inline">\(T = 75\)</span> cromos, el número esperado de cromos individuales a comprar según la teoría del coleccionista de cupones es:</p>
+<p><span class="math display">\[\mathbb{E}[\text{Cromos}] = T \sum_{i=1}^{T} \frac{1}{i} = 75 \times H_{75} \approx 75 \times 4.9014 = 367.6\text{ cromos}\]</span></p>
+<p>Al comprarse en paquetes de <span class="math inline">\(6\)</span> cromos, el número esperado de sobres es aproximadamente <span class="math inline">\(\frac{367.6}{6} \approx 61.27\text{ sobres}\)</span>, concordando con la media muestral obtenida en la simulación.</p>
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
+<a href="problema-3.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>

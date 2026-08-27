@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Bookdown v1</title>
-  <meta name="description" content="Page not found | Bookdown v1" />
+  <title>2 Problema 2 | Bookdown v1</title>
+  <meta name="description" content="2 Problema 2 | Bookdown v1" />
   <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Bookdown v1" />
+  <meta property="og:title" content="2 Problema 2 | Bookdown v1" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Bookdown v1" />
+  <meta name="twitter:title" content="2 Problema 2 | Bookdown v1" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="problema-1.html"/>
+<link rel="next" href="problema-3.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -202,19 +202,116 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="problema-2" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Problema 2<a href="problema-2.html#problema-2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ol start="2" style="list-style-type: decimal">
+<li>Use simulaciones para aproximar el valor de la integral <span class="math inline">\(I := \int_{0}^{\infty}\int_{0}^{x}e^{-(x+y)}\,dy\,dx\)</span>, y compare su estimación con el valor exacto de dicha integral.</li>
+</ol>
+<div id="cálculo-del-valor-exacto." class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Cálculo del valor exacto.<a href="problema-2.html#c%C3%A1lculo-del-valor-exacto." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Primero calcularemos el valor exacto de <span class="math inline">\(I\)</span>, notemos que:</p>
+<p><span class="math display">\[I = \int_{0}^{\infty}\left(\int_{0}^{x}e^{-y}\,dy\right)e^{-x}\,dx = \int_{0}^{\infty}(1 - e^{-x})e^{-x}\,dx\]</span>
+<span class="math display">\[= \int_{0}^{\infty}(e^{-x} - e^{-2x})\,dx = \left.\left(-e^{-x} + \frac{1}{2}e^{-2x}\right)\right\vert{}_{0}^{\infty} = 0 - \left(-\frac{1}{2}\right) = \frac{1}{2}\]</span></p>
+<p>En conclusión el valor exacto de <span class="math inline">\(I = 0.5\)</span>.</p>
+</div>
+<div id="interpretación-probabilística." class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Interpretación probabilística.<a href="problema-2.html#interpretaci%C3%B3n-probabil%C3%ADstica." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Observemos que el integrando es <span class="math inline">\(e^{-(x+y)}\)</span> que es la densidad conjunta de dos variables aleatorias independientes con distribución exponencial de tasa 1, <span class="math inline">\(X \sim \text{Exp}(1)\)</span> e <span class="math inline">\(Y \sim \text{Exp}(1)\)</span>. Entonces:</p>
+<p><span class="math display">\[I = \int_{0}^{\infty}\int_{0}^{\infty}e^{-(x+y)}\mathbf{1}_{\{y &lt; x\}}\,dy\,dx = \mathbb{E}[\mathbf{1}_{\{Y &lt; X\}}]\]</span></p>
+</div>
+<div id="simulación-de-monte-carlo.-1" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Simulación de Monte Carlo.<a href="problema-2.html#simulaci%C3%B3n-de-monte-carlo.-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p><strong>Algoritmo para generar un valor de <span class="math inline">\(\mathbf{1}_{\{Y &lt; X\}}\)</span></strong><br />
+Para simular un valor de <span class="math inline">\(\mathbf{1}_{\{Y &lt; X\}}\)</span>, seguimos el siguiente procedimiento:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Generar <span class="math inline">\(U_{1} \sim \text{Unif}(0,1)\)</span> y <span class="math inline">\(U_{2} \sim \text{Unif}(0,1)\)</span>.<br />
+</li>
+<li><span class="math inline">\(X \leftarrow -\ln(U_{1})\)</span> y <span class="math inline">\(Y \leftarrow -\ln(U_{2})\)</span>.<br />
+</li>
+<li>Devolver <span class="math inline">\(\mathbf{1}_{\{Y &lt; X\}}\)</span>.</li>
+</ol></li>
+<li><p><strong>Estimador</strong><br />
+Generamos <span class="math inline">\(N\)</span> pares independientes <span class="math inline">\((X_{1}, Y_{1}), \dots, (X_{N}, Y_{N})\)</span>, y calculamos la media muestral:<br />
+<span class="math display">\[\hat{I}_{N} = \frac{1}{N}\sum_{i=1}^{N}\mathbf{1}_{\{Y_{i} \le X_{i}\}}\]</span></p></li>
+<li><p><strong>Error estándar</strong><br />
+<span class="math display">\[\text{Error estándar} = \sqrt{\frac{\hat{I}_{N}(1 - \hat{I}_{N})}{N}}\]</span></p></li>
+</ul>
+</div>
+<div id="código-de-simulación-en-python.-1" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Código de simulación en Python.<a href="problema-2.html#c%C3%B3digo-de-simulaci%C3%B3n-en-python.-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="problema-2.html#cb2-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="problema-2.html#cb2-2" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="problema-2.html#cb2-3" tabindex="-1"></a><span class="co"># Número de simulaciones</span></span>
+<span id="cb2-4"><a href="problema-2.html#cb2-4" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">1000000</span></span>
+<span id="cb2-5"><a href="problema-2.html#cb2-5" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="problema-2.html#cb2-6" tabindex="-1"></a><span class="co"># Generar variables exponenciales (tasa 1)</span></span>
+<span id="cb2-7"><a href="problema-2.html#cb2-7" tabindex="-1"></a>X <span class="op">=</span> <span class="op">-</span>np.log(np.random.rand(N))</span>
+<span id="cb2-8"><a href="problema-2.html#cb2-8" tabindex="-1"></a>Y <span class="op">=</span> <span class="op">-</span>np.log(np.random.rand(N))</span>
+<span id="cb2-9"><a href="problema-2.html#cb2-9" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="problema-2.html#cb2-10" tabindex="-1"></a><span class="co"># Estimar la probabilidad P(Y &lt;= X)</span></span>
+<span id="cb2-11"><a href="problema-2.html#cb2-11" tabindex="-1"></a>estimacion <span class="op">=</span> np.mean(Y <span class="op">&lt;=</span> X)</span>
+<span id="cb2-12"><a href="problema-2.html#cb2-12" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="problema-2.html#cb2-13" tabindex="-1"></a><span class="co"># Calcular error estándar</span></span>
+<span id="cb2-14"><a href="problema-2.html#cb2-14" tabindex="-1"></a>error_est <span class="op">=</span> np.sqrt(estimacion <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> estimacion) <span class="op">/</span> N)</span>
+<span id="cb2-15"><a href="problema-2.html#cb2-15" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="problema-2.html#cb2-16" tabindex="-1"></a><span class="co"># Resultados</span></span>
+<span id="cb2-17"><a href="problema-2.html#cb2-17" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Valor exacto: 0.5&quot;</span>)</span>
+<span id="cb2-18"><a href="problema-2.html#cb2-18" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Estimación Monte Carlo: </span><span class="sc">{</span>estimacion<span class="sc">:.6f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb2-19"><a href="problema-2.html#cb2-19" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Error estándar: </span><span class="sc">{</span>error_est<span class="sc">:.6f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb2-20"><a href="problema-2.html#cb2-20" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Error absoluto: </span><span class="sc">{</span><span class="bu">abs</span>(estimacion <span class="op">-</span> <span class="fl">0.5</span>)<span class="sc">:.6f}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+</div>
+<div id="resultados-de-la-simulación-1" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Resultados de la simulación<a href="problema-2.html#resultados-de-la-simulaci%C3%B3n-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Al ejecutar el código con <span class="math inline">\(N = 10^6\)</span> se obtiene una salida similar a:
+* <strong>Estimación Monte Carlo:</strong> <span class="math inline">\(0.500123\)</span><br />
+* <strong>Error estándar:</strong> <span class="math inline">\(0.000500\)</span><br />
+* <strong>Valor exacto:</strong> <span class="math inline">\(0.5\)</span><br />
+* <strong>Error absoluto:</strong> <span class="math inline">\(0.000123\)</span></p>
+<div id="comparación-de-resultados" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Comparación de resultados<a href="problema-2.html#comparaci%C3%B3n-de-resultados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="21%" />
+<col width="26%" />
+<col width="26%" />
+<col width="26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Método</th>
+<th align="center">Valor</th>
+<th align="center">Error absoluto</th>
+<th align="center">Error relativo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Valor exacto</td>
+<td align="center"><span class="math inline">\(0.5\)</span></td>
+<td align="center">—</td>
+<td align="center">—</td>
+</tr>
+<tr class="even">
+<td align="left">Monte Carlo (<span class="math inline">\(N = 10^{6}\)</span>)</td>
+<td align="center"><span class="math inline">\(0.500123\)</span></td>
+<td align="center"><span class="math inline">\(1.23 \times 10^{-4}\)</span></td>
+<td align="center"><span class="math inline">\(2.46 \times 10^{-4}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Interpretación:</strong> La integral exacta vale <span class="math inline">\(\frac{1}{2}\)</span>. Mediante simulación de Monte Carlo, interpretando la integral como la probabilidad de que una variable exponencial sea menor que otra independiente, obtenemos una estimación muy cercana al valor exacto. El error disminuye como <span class="math inline">\(O(1/\sqrt{N})\)</span> consistente con la teoría de Monte Carlo.</p>
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="problema-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="problema-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
