@@ -2,13 +2,15 @@ bookdown::gitbook:
   css: style.css
   highlight: tango
   split_by: chapter
+  includes:
+    in_header: copy-button.html
   config:
     toc:
       collapse: subsection
       before: |
         <li><a href="./">Solucionario Simulación EPN</a></li>
       after: |
-        <li><a href="https://github.com/davidfiergan-hub/solucionario-simulacion-bookdown" target="blank">Publicado en GitHub</a></li>
+        <li><a href="https://github.com/davidfiergan-hub/solucionario-simulacion-bookdown" target="blank">Ver repositorio en GitHub</a></li>
     toolbar:
       position: fixed
     edit: null
