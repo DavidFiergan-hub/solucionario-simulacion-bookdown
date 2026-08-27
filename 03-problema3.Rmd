@@ -1,61 +1,39 @@
----
+# Ejercicio 3: Generador Congruencial Lineal
 
-### `03-problema3.Rmd`
-
-```markdown
-# Problema 3
-
-3. Dado el generador congruencial de números pseudoaleatorios definido por[cite: 4]:
+Dado el generador congruencial de números pseudoaleatorios definido por[cite: 4]:
 
 $$X_{n+1} = (25 X_{n} + 81) \pmod{1024}, \qquad U_{n} := \frac{X_{n}}{1024}, \quad n \in \mathbb{N}$$
 
-## 3.1. ¿Es de ciclo óptimo el siguiente generador congruencial?[cite: 4]
+## 3.1. ¿Es de ciclo óptimo el generador congruencial?
 
-### Demostración analítica (Teorema de Hull-Dobell).
+### Demostración analítica (Teorema de Hull-Dobell)
 
-Un generador congruencial lineal de la forma $X_{n+1} = (aX_n + c) \pmod m$ tiene período completo (ciclo óptimo de longitud $m = 1024$) si y solo si se verifican las tres condiciones siguientes:
+Un generador congruencial lineal $X_{n+1} = (aX_n + c) \pmod m$ tiene período completo ($m = 1024$) si y solo si verifica las tres condiciones:
 
-1. **El incremento $c$ y el módulo $m$ son primos relativos:**
-   $$\gcd(c, m) = \gcd(81, 1024) = \gcd(3^4, 2^{10}) = 1$$
-   Se cumple la condición.
-
+1. **Incremento primo relativo con el módulo:**
+   $$\gcd(c, m) = \gcd(81, 1024) = \gcd(3^4, 2^{10}) = 1 \quad \checkmark$$
 2. **Todo factor primo de $m$ divide a $a - 1$:**
    El único factor primo de $m = 1024 = 2^{10}$ es $p = 2$.
-   $$a - 1 = 25 - 1 = 24$$
-   Como $24$ es divisible por $2$ ($2 \mid 24$), se cumple la condición.
+   $$a - 1 = 25 - 1 = 24 \implies 2 \mid 24 \quad \checkmark$$
+3. **Si $4 \mid m$, entonces $4 \mid (a - 1)$:**
+   $$4 \mid 1024 \implies 4 \mid 24 \quad \checkmark$$
 
-3. **Si $m$ es múltiplo de 4, entonces $a - 1$ es múltiplo de 4:**
-   Dado que $4 \mid 1024$, verificamos:
-   $$4 \mid 24$$
-   Se cumple la condición.
+**Conclusión:** El generador congruencial **sí es de ciclo óptimo** con un período completo de $m = 1024$.
 
-**Conclusión:** El generador congruencial **sí es de ciclo óptimo** y su período es $m = 1024$.
+## 3.2. Valor de $U_{51202}$ tomando como semilla $X_0 = 40$
 
----
+Dado que el período es $m = 1024$, los valores se repiten cada $1024$ pasos. Reducimos el índice módulo $1024$:
 
-## 3.2. Tomando como semilla $X_0 := 40$, ¿cuánto vale el valor de $U_{51202}$?[cite: 4]
+$$51202 \pmod{1024} = 51202 - (50 \times 1024) = 2 \implies X_{51202} = X_{2}$$
 
-### Demostración analítica.
+Calculamos los primeros dos términos iterativamente:
+1. $X_1 = (25 \times 40 + 81) \pmod{1024} = 1081 \pmod{1024} = 57$
+2. $X_2 = (25 \times 57 + 81) \pmod{1024} = 1506 \pmod{1024} = 482$
 
-Dado que el período completo es $m = 1024$, los valores de la sucesión se repiten periódicamente cada $1024$ pasos. Por tanto, reducimos el índice módulo $1024$:
+Normalizando para obtener el valor pseudoaleatorio:
+$$U_{51202} = \frac{X_2}{1024} = \frac{482}{1024} = \frac{241}{512} \approx 0.470703125$$
 
-$$51202 \pmod{1024} = 51202 - 50 \times 1024 = 2$$
-
-Esto implica que $X_{51202} = X_{2}$. Procedemos a calcular iterativamente los primeros dos términos a partir de la semilla $X_0 = 40$:
-
-1. Para $n = 0$:
-   $$X_1 = (25 \times 40 + 81) \pmod{1024} = (1000 + 81) \pmod{1024} = 1081 \pmod{1024} = 57$$
-
-2. Para $n = 1$:
-   $$X_2 = (25 \times 57 + 81) \pmod{1024} = (1425 + 81) \pmod{1024} = 1506 \pmod{1024} = 482$$
-
-Calculando el número pseudoaleatorio normalizado $U_{51202} = U_2$:
-
-$$U_{51202} = \frac{X_2}{1024} = \frac{482}{1024} = \frac{241}{512} = 0.470703125$$
-
----
-
-## Código de verificación en Python.
+## Código de verificación en Python
 
 ```python
 a = 25
@@ -65,15 +43,11 @@ x0 = 40
 
 # Verificación computacional del período
 visitados = set()
-x = x0
-periodo = 0
+x, periodo = x0, 0
 while x not in visitados:
     visitados.add(x)
     x = (a * x + c) % m
     periodo += 1
-
-print(f"Longitud del período obtenido: {periodo}")
-print(f"¿Es de ciclo óptimo?: {periodo == m}")
 
 # Cálculo del término 51202
 x_n = x0
@@ -83,5 +57,7 @@ for _ in range(pasos):
 
 u_n = x_n / m
 
+print(f"Período obtenido: {periodo} (Óptimo = {periodo == m})")
 print(f"Valor de X_51202: {x_n}")
 print(f"Valor de U_51202: {u_n:.9f}")
+```

@@ -1,6 +1,13 @@
 book_filename: "Solucionario_Simulacion_EPN"
 output_dir: "docs"
+delete_merged_file: true
+rmd_files: [
+  "index.Rmd",
+  "01-problema1.Rmd",
+  "02-problema2.Rmd",
+  "03-problema3.Rmd",
+  "04-problema4.Rmd"
+]
 language:
   ui:
     chapter_name: "Ejercicio "
-delete_merged_file: true

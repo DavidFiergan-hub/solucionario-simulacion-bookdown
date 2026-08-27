@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="tamaños-de-muestra-a-probar.html"/>
+<link rel="next" href="ejercicio-3-generador-congruencial-lineal.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -53,6 +53,71 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -79,49 +144,26 @@
 <li class="chapter" data-level="1.1.1" data-path="problema-1.html"><a href="problema-1.html#simulaci%C3%B3n-de-monte-carlo."><i class="fa fa-check"></i><b>1.1.1</b> Simulación de Monte Carlo.</a></li>
 <li class="chapter" data-level="1.1.2" data-path="problema-1.html"><a href="problema-1.html#c%C3%B3digo-de-simulaci%C3%B3n-en-python."><i class="fa fa-check"></i><b>1.1.2</b> Código de simulación en Python.</a></li>
 </ul></li>
+<li class="chapter" data-level="1.2" data-path="problema-1.html"><a href="problema-1.html#resultados-de-la-simulaci%C3%B3n"><i class="fa fa-check"></i><b>1.2</b> Resultados de la simulación</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="tamaños-de-muestra-a-probar.html"><a href="tamaños-de-muestra-a-probar.html"><i class="fa fa-check"></i><b>2</b> Tamaños de muestra a probar</a></li>
-<li class="chapter" data-level="3" data-path="simulación-adicional-con-m-100000-para-mejor-precisión.html"><a href="simulación-adicional-con-m-100000-para-mejor-precisión.html"><i class="fa fa-check"></i><b>3</b> Simulación adicional con M = 100000 para mejor precisión</a></li>
-<li class="chapter" data-level="4" data-path="ejercicios-de-simulación.html"><a href="ejercicios-de-simulación.html"><i class="fa fa-check"></i><b>4</b> Ejercicios de Simulación</a>
+<li class="chapter" data-level="2" data-path="ejercicio-3-generador-congruencial-lineal.html"><a href="ejercicio-3-generador-congruencial-lineal.html"><i class="fa fa-check"></i><b>2</b> Ejercicio 3: Generador Congruencial Lineal</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="ejercicios-de-simulación.html"><a href="ejercicios-de-simulación.html#sumas-uniformes-y-tiempo-de-parada"><i class="fa fa-check"></i><b>4.1</b> 1. Sumas Uniformes y Tiempo de Parada</a></li>
-<li class="chapter" data-level="4.2" data-path="ejercicios-de-simulación.html"><a href="ejercicios-de-simulación.html#integral-doble-monte-carlo"><i class="fa fa-check"></i><b>4.2</b> 2. Integral Doble Monte Carlo</a></li>
-<li class="chapter" data-level="4.3" data-path="ejercicios-de-simulación.html"><a href="ejercicios-de-simulación.html#generador-congruencial"><i class="fa fa-check"></i><b>4.3</b> 3. Generador Congruencial</a></li>
-<li class="chapter" data-level="4.4" data-path="ejercicios-de-simulación.html"><a href="ejercicios-de-simulación.html#problema-del-coleccionista"><i class="fa fa-check"></i><b>4.4</b> 4. Problema del Coleccionista</a>
+<li class="chapter" data-level="2.1" data-path="ejercicio-3-generador-congruencial-lineal.html"><a href="ejercicio-3-generador-congruencial-lineal.html#es-de-ciclo-%C3%B3ptimo-el-generador-congruencial"><i class="fa fa-check"></i><b>2.1</b> 3.1. ¿Es de ciclo óptimo el generador congruencial?</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="ejercicios-de-simulación.html"><a href="ejercicios-de-simulación.html#problema2.rmd"><i class="fa fa-check"></i><b>4.4.1</b> <code>02-problema2.Rmd</code></a></li>
+<li class="chapter" data-level="2.1.1" data-path="ejercicio-3-generador-congruencial-lineal.html"><a href="ejercicio-3-generador-congruencial-lineal.html#demostraci%C3%B3n-anal%C3%ADtica-teorema-de-hull-dobell"><i class="fa fa-check"></i><b>2.1.1</b> Demostración analítica (Teorema de Hull-Dobell)</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="ejercicios-de-simulación.html"><a href="ejercicios-de-simulación.html#c%C3%A1lculo-del-valor-exactocite-4."><i class="fa fa-check"></i><b>4.5</b> Cálculo del valor exacto[cite: 4].</a></li>
-<li class="chapter" data-level="4.6" data-path="ejercicios-de-simulación.html"><a href="ejercicios-de-simulación.html#interpretaci%C3%B3n-probabil%C3%ADsticacite-4."><i class="fa fa-check"></i><b>4.6</b> Interpretación probabilística[cite: 4].</a></li>
-<li class="chapter" data-level="4.7" data-path="ejercicios-de-simulación.html"><a href="ejercicios-de-simulación.html#simulaci%C3%B3n-de-monte-carlocite-4."><i class="fa fa-check"></i><b>4.7</b> Simulación de Monte Carlo[cite: 4].</a></li>
-<li class="chapter" data-level="4.8" data-path="ejercicios-de-simulación.html"><a href="ejercicios-de-simulación.html#c%C3%B3digo-de-simulaci%C3%B3n-en-pythoncite-4."><i class="fa fa-check"></i><b>4.8</b> Código de simulación en Python[cite: 4].</a></li>
+<li class="chapter" data-level="2.2" data-path="ejercicio-3-generador-congruencial-lineal.html"><a href="ejercicio-3-generador-congruencial-lineal.html#valor-de-u_51202-tomando-como-semilla-x_0-40"><i class="fa fa-check"></i><b>2.2</b> 3.2. Valor de <span class="math inline">\(U_{51202}\)</span> tomando como semilla <span class="math inline">\(X_0 = 40\)</span></a></li>
+<li class="chapter" data-level="2.3" data-path="ejercicio-3-generador-congruencial-lineal.html"><a href="ejercicio-3-generador-congruencial-lineal.html#c%C3%B3digo-de-verificaci%C3%B3n-en-python"><i class="fa fa-check"></i><b>2.3</b> Código de verificación en Python</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="número-de-simulaciones.html"><a href="número-de-simulaciones.html"><i class="fa fa-check"></i><b>5</b> Número de simulaciones</a></li>
-<li class="chapter" data-level="6" data-path="generar-variables-exponenciales-tasa-1.html"><a href="generar-variables-exponenciales-tasa-1.html"><i class="fa fa-check"></i><b>6</b> Generar variables exponenciales (tasa 1)</a></li>
-<li class="chapter" data-level="7" data-path="estimar-la-probabilidad-py-x.html"><a href="estimar-la-probabilidad-py-x.html"><i class="fa fa-check"></i><b>7</b> Estimar la probabilidad P(Y &lt;= X)</a></li>
-<li class="chapter" data-level="8" data-path="calcular-error-estándar.html"><a href="calcular-error-estándar.html"><i class="fa fa-check"></i><b>8</b> Calcular error estándar</a></li>
-<li class="chapter" data-level="9" data-path="resultados.html"><a href="resultados.html"><i class="fa fa-check"></i><b>9</b> Resultados</a>
+<li class="chapter" data-level="3" data-path="ejercicio-4-variación-del-problema-del-coleccionista.html"><a href="ejercicio-4-variación-del-problema-del-coleccionista.html"><i class="fa fa-check"></i><b>3</b> Ejercicio 4: Variación del Problema del Coleccionista</a>
 <ul>
-<li class="chapter" data-level="9.0.1" data-path="resultados.html"><a href="resultados.html#problema3.rmd"><i class="fa fa-check"></i><b>9.0.1</b> <code>03-problema3.Rmd</code></a></li>
-<li class="chapter" data-level="9.1" data-path="resultados.html"><a href="resultados.html#es-de-ciclo-%C3%B3ptimo-el-siguiente-generador-congruencialcite-4"><i class="fa fa-check"></i><b>9.1</b> 3.1. ¿Es de ciclo óptimo el siguiente generador congruencial?[cite: 4]</a>
+<li class="chapter" data-level="3.1" data-path="ejercicio-4-variación-del-problema-del-coleccionista.html"><a href="ejercicio-4-variación-del-problema-del-coleccionista.html#simulaci%C3%B3n-de-monte-carlo"><i class="fa fa-check"></i><b>3.1</b> Simulación de Monte Carlo</a></li>
+<li class="chapter" data-level="3.2" data-path="ejercicio-4-variación-del-problema-del-coleccionista.html"><a href="ejercicio-4-variación-del-problema-del-coleccionista.html#c%C3%B3digo-de-simulaci%C3%B3n-en-python"><i class="fa fa-check"></i><b>3.2</b> Código de simulación en Python</a></li>
+<li class="chapter" data-level="3.3" data-path="ejercicio-4-variación-del-problema-del-coleccionista.html"><a href="ejercicio-4-variación-del-problema-del-coleccionista.html#resultados-de-la-simulaci%C3%B3n-1"><i class="fa fa-check"></i><b>3.3</b> Resultados de la simulación</a>
 <ul>
-<li class="chapter" data-level="9.1.1" data-path="resultados.html"><a href="resultados.html#demostraci%C3%B3n-anal%C3%ADtica-teorema-de-hull-dobell."><i class="fa fa-check"></i><b>9.1.1</b> Demostración analítica (Teorema de Hull-Dobell).</a></li>
+<li class="chapter" data-level="3.3.1" data-path="ejercicio-4-variación-del-problema-del-coleccionista.html"><a href="ejercicio-4-variación-del-problema-del-coleccionista.html#interpretaci%C3%B3n-anal%C3%ADtica"><i class="fa fa-check"></i><b>3.3.1</b> Interpretación analítica</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="resultados.html"><a href="resultados.html#tomando-como-semilla-x_0-40-cu%C3%A1nto-vale-el-valor-de-u_51202cite-4"><i class="fa fa-check"></i><b>9.2</b> 3.2. Tomando como semilla <span class="math inline">\(X_0 := 40\)</span>, ¿cuánto vale el valor de <span class="math inline">\(U_{51202}\)</span>?[cite: 4]</a>
-<ul>
-<li class="chapter" data-level="9.2.1" data-path="resultados.html"><a href="resultados.html#demostraci%C3%B3n-anal%C3%ADtica."><i class="fa fa-check"></i><b>9.2.1</b> Demostración analítica.</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="resultados.html"><a href="resultados.html#c%C3%B3digo-de-verificaci%C3%B3n-en-python."><i class="fa fa-check"></i><b>9.3</b> Código de verificación en Python.</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="verificación-computacional-del-período.html"><a href="verificación-computacional-del-período.html"><i class="fa fa-check"></i><b>10</b> Verificación computacional del período</a></li>
-<li class="chapter" data-level="11" data-path="cálculo-del-término-51202.html"><a href="cálculo-del-término-51202.html"><i class="fa fa-check"></i><b>11</b> Cálculo del término 51202</a>
-<ul>
-<li class="chapter" data-level="11.0.1" data-path="cálculo-del-término-51202.html"><a href="cálculo-del-término-51202.html#problema4.rmd"><i class="fa fa-check"></i><b>11.0.1</b> <code>04-problema4.Rmd</code></a></li>
-<li class="chapter" data-level="11.1" data-path="cálculo-del-término-51202.html"><a href="cálculo-del-término-51202.html#simulaci%C3%B3n-de-monte-carlocite-4.-1"><i class="fa fa-check"></i><b>11.1</b> Simulación de Monte Carlo[cite: 4].</a></li>
-<li class="chapter" data-level="11.2" data-path="cálculo-del-término-51202.html"><a href="cálculo-del-término-51202.html#c%C3%B3digo-de-simulaci%C3%B3n-en-pythoncite-4.-1"><i class="fa fa-check"></i><b>11.2</b> Código de simulación en Python[cite: 4].</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="parametrización.html"><a href="parametrización.html"><i class="fa fa-check"></i><b>12</b> Parametrización</a></li>
-<li class="chapter" data-level="13" data-path="estimaciones.html"><a href="estimaciones.html"><i class="fa fa-check"></i><b>13</b> Estimaciones</a></li>
 </ul>
 
       </nav>
@@ -169,24 +211,141 @@ Generamos <span class="math inline">\(M\)</span> valores independientes de <span
 </div>
 <div id="código-de-simulación-en-python." class="section level3 hasAnchor" number="1.1.2">
 <h3><span class="header-section-number">1.1.2</span> Código de simulación en Python.<a href="problema-1.html#c%C3%B3digo-de-simulaci%C3%B3n-en-python." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>```python
-import numpy as np
-import matplotlib.pyplot as plt</p>
-<p>def generar_N():
-“““Genera un valor de N.”“”
-suma = 0.0
-n = 0
-while suma &lt;= 1.0:
-suma += np.random.random()
-n += 1
-return n</p>
-<p>def estimar_E_N(M):
-“““Estima E[N] usando M simulaciones.”“”
-valores_N = np.array([generar_N() for _ in range(M)])
-estimacion = np.mean(valores_N)
-error_est = np.std(valores_N, ddof=1) / np.sqrt(M)
-return estimacion, error_est, valores_N</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="problema-1.html#cb1-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="problema-1.html#cb1-2" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="problema-1.html#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="problema-1.html#cb1-4" tabindex="-1"></a><span class="kw">def</span> generar_N():</span>
+<span id="cb1-5"><a href="problema-1.html#cb1-5" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Genera un valor de N.&quot;&quot;&quot;</span></span>
+<span id="cb1-6"><a href="problema-1.html#cb1-6" tabindex="-1"></a>    suma <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb1-7"><a href="problema-1.html#cb1-7" tabindex="-1"></a>    n <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-8"><a href="problema-1.html#cb1-8" tabindex="-1"></a>    <span class="cf">while</span> suma <span class="op">&lt;=</span> <span class="fl">1.0</span>:</span>
+<span id="cb1-9"><a href="problema-1.html#cb1-9" tabindex="-1"></a>        suma <span class="op">+=</span> np.random.random()</span>
+<span id="cb1-10"><a href="problema-1.html#cb1-10" tabindex="-1"></a>        n <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb1-11"><a href="problema-1.html#cb1-11" tabindex="-1"></a>    <span class="cf">return</span> n</span>
+<span id="cb1-12"><a href="problema-1.html#cb1-12" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="problema-1.html#cb1-13" tabindex="-1"></a><span class="kw">def</span> estimar_E_N(M):</span>
+<span id="cb1-14"><a href="problema-1.html#cb1-14" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Estima E[N] usando M simulaciones.&quot;&quot;&quot;</span></span>
+<span id="cb1-15"><a href="problema-1.html#cb1-15" tabindex="-1"></a>    valores_N <span class="op">=</span> np.array([generar_N() <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(M)])</span>
+<span id="cb1-16"><a href="problema-1.html#cb1-16" tabindex="-1"></a>    estimacion <span class="op">=</span> np.mean(valores_N)</span>
+<span id="cb1-17"><a href="problema-1.html#cb1-17" tabindex="-1"></a>    error_est <span class="op">=</span> np.std(valores_N, ddof<span class="op">=</span><span class="dv">1</span>) <span class="op">/</span> np.sqrt(M)</span>
+<span id="cb1-18"><a href="problema-1.html#cb1-18" tabindex="-1"></a>    <span class="cf">return</span> estimacion, error_est, valores_N</span>
+<span id="cb1-19"><a href="problema-1.html#cb1-19" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="problema-1.html#cb1-20" tabindex="-1"></a><span class="co"># Tamaños de muestra a probar</span></span>
+<span id="cb1-21"><a href="problema-1.html#cb1-21" tabindex="-1"></a>muestras <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>]</span>
+<span id="cb1-22"><a href="problema-1.html#cb1-22" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="problema-1.html#cb1-23" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Simulación para estimar E[N]&quot;</span>)</span>
+<span id="cb1-24"><a href="problema-1.html#cb1-24" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;-&quot;</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb1-25"><a href="problema-1.html#cb1-25" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span><span class="st">&#39;M&#39;</span><span class="sc">:&lt;10}</span><span class="ss"> </span><span class="sc">{</span><span class="st">&#39;Estimación&#39;</span><span class="sc">:&lt;15}</span><span class="ss"> </span><span class="sc">{</span><span class="st">&#39;Error estándar&#39;</span><span class="sc">:&lt;15}</span><span class="ss">&quot;</span>)</span>
+<span id="cb1-26"><a href="problema-1.html#cb1-26" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;-&quot;</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb1-27"><a href="problema-1.html#cb1-27" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="problema-1.html#cb1-28" tabindex="-1"></a><span class="cf">for</span> M <span class="kw">in</span> muestras:</span>
+<span id="cb1-29"><a href="problema-1.html#cb1-29" tabindex="-1"></a>    estimacion, error, valores <span class="op">=</span> estimar_E_N(M)</span>
+<span id="cb1-30"><a href="problema-1.html#cb1-30" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>M<span class="sc">:&lt;10}</span><span class="ss"> </span><span class="sc">{</span>estimacion<span class="sc">:&lt;15.6f}</span><span class="ss"> </span><span class="sc">{</span>error<span class="sc">:&lt;15.6f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb1-31"><a href="problema-1.html#cb1-31" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="problema-1.html#cb1-32" tabindex="-1"></a><span class="co"># Simulación adicional con M = 100000 para mejor precisión</span></span>
+<span id="cb1-33"><a href="problema-1.html#cb1-33" tabindex="-1"></a>M_grande <span class="op">=</span> <span class="dv">100000</span></span>
+<span id="cb1-34"><a href="problema-1.html#cb1-34" tabindex="-1"></a>estimacion_final, error_final, valores_final <span class="op">=</span> estimar_E_N(M_grande)</span>
+<span id="cb1-35"><a href="problema-1.html#cb1-35" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="problema-1.html#cb1-36" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;-&quot;</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb1-37"><a href="problema-1.html#cb1-37" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">Con M = </span><span class="sc">{</span>M_grande<span class="sc">}</span><span class="ss">:&quot;</span>)</span>
+<span id="cb1-38"><a href="problema-1.html#cb1-38" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Estimación final: </span><span class="sc">{</span>estimacion_final<span class="sc">:.6f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb1-39"><a href="problema-1.html#cb1-39" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Error estándar: </span><span class="sc">{</span>error_final<span class="sc">:.6f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb1-40"><a href="problema-1.html#cb1-40" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="problema-1.html#cb1-41" tabindex="-1"></a><span class="op">&lt;!--</span>chapter:end:<span class="dv">0</span><span class="er">1</span><span class="op">-</span>problema1.Rmd<span class="op">--&gt;</span></span>
+<span id="cb1-42"><a href="problema-1.html#cb1-42" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="problema-1.html#cb1-43" tabindex="-1"></a><span class="co"># Ejercicio 2: Integración Doble por Monte Carlo</span></span>
+<span id="cb1-44"><a href="problema-1.html#cb1-44" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="problema-1.html#cb1-45" tabindex="-1"></a>Use simulaciones para aproximar el valor de la integral $I <span class="op">:=</span> \int_{<span class="dv">0</span>}<span class="op">^</span>{\infty}\int_{<span class="dv">0</span>}<span class="op">^</span>{x}e<span class="op">^</span>{<span class="op">-</span>(x<span class="op">+</span>y)}\,dy\,dx$, y compare su estimación con el valor exacto de dicha integral[cite: <span class="dv">4</span>].</span>
+<span id="cb1-46"><a href="problema-1.html#cb1-46" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="problema-1.html#cb1-47" tabindex="-1"></a><span class="co">## Cálculo del valor exacto</span></span>
+<span id="cb1-48"><a href="problema-1.html#cb1-48" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="problema-1.html#cb1-49" tabindex="-1"></a>Primero calcularemos el valor exacto de $I$, notemos que[cite: <span class="dv">4</span>]:</span>
+<span id="cb1-50"><a href="problema-1.html#cb1-50" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="problema-1.html#cb1-51" tabindex="-1"></a>$$I <span class="op">=</span> \int_{<span class="dv">0</span>}<span class="op">^</span>{\infty}\left(\int_{<span class="dv">0</span>}<span class="op">^</span>{x}e<span class="op">^</span>{<span class="op">-</span>y}\,dy\right)e<span class="op">^</span>{<span class="op">-</span>x}\,dx <span class="op">=</span> \int_{<span class="dv">0</span>}<span class="op">^</span>{\infty}(<span class="dv">1</span> <span class="op">-</span> e<span class="op">^</span>{<span class="op">-</span>x})e<span class="op">^</span>{<span class="op">-</span>x}\,dx$$</span>
+<span id="cb1-52"><a href="problema-1.html#cb1-52" tabindex="-1"></a>$$<span class="op">=</span> \int_{<span class="dv">0</span>}<span class="op">^</span>{\infty}(e<span class="op">^</span>{<span class="op">-</span>x} <span class="op">-</span> e<span class="op">^</span>{<span class="op">-</span><span class="dv">2</span><span class="er">x</span>})\,dx <span class="op">=</span> \left.\left(<span class="op">-</span>e<span class="op">^</span>{<span class="op">-</span>x} <span class="op">+</span> \frac{<span class="dv">1</span>}{<span class="dv">2</span>}e<span class="op">^</span>{<span class="op">-</span><span class="dv">2</span><span class="er">x</span>}\right)\right\vert{}_{<span class="dv">0</span>}<span class="op">^</span>{\infty} <span class="op">=</span> <span class="dv">0</span> <span class="op">-</span> \left(<span class="op">-</span>\frac{<span class="dv">1</span>}{<span class="dv">2</span>}\right) <span class="op">=</span> \frac{<span class="dv">1</span>}{<span class="dv">2</span>}$$</span>
+<span id="cb1-53"><a href="problema-1.html#cb1-53" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="problema-1.html#cb1-54" tabindex="-1"></a>En conclusión el valor exacto de $I <span class="op">=</span> <span class="fl">0.5</span>$[cite: <span class="dv">4</span>].</span>
+<span id="cb1-55"><a href="problema-1.html#cb1-55" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="problema-1.html#cb1-56" tabindex="-1"></a><span class="co">## Interpretación probabilística</span></span>
+<span id="cb1-57"><a href="problema-1.html#cb1-57" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="problema-1.html#cb1-58" tabindex="-1"></a>Observemos que el integrando es $e<span class="op">^</span>{<span class="op">-</span>(x<span class="op">+</span>y)}$ que es la densidad conjunta de dos variables aleatorias independientes con distribución exponencial de tasa <span class="dv">1</span>, $X \sim \text{Exp}(<span class="dv">1</span>)$ e $Y \sim \text{Exp}(<span class="dv">1</span>)$[cite: <span class="dv">4</span>]. Entonces[cite: <span class="dv">4</span>]:</span>
+<span id="cb1-59"><a href="problema-1.html#cb1-59" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="problema-1.html#cb1-60" tabindex="-1"></a>$$I <span class="op">=</span> \int_{<span class="dv">0</span>}<span class="op">^</span>{\infty}\int_{<span class="dv">0</span>}<span class="op">^</span>{\infty}e<span class="op">^</span>{<span class="op">-</span>(x<span class="op">+</span>y)}\mathbf{<span class="dv">1</span>}_{\{y <span class="op">&lt;</span> x\}}\,dy\,dx <span class="op">=</span> \mathbb{E}[\mathbf{<span class="dv">1</span>}_{\{Y <span class="op">&lt;</span> X\}}]$$</span>
+<span id="cb1-61"><a href="problema-1.html#cb1-61" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="problema-1.html#cb1-62" tabindex="-1"></a><span class="co">## Simulación de Monte Carlo</span></span>
+<span id="cb1-63"><a href="problema-1.html#cb1-63" tabindex="-1"></a></span>
+<span id="cb1-64"><a href="problema-1.html#cb1-64" tabindex="-1"></a><span class="op">*</span> <span class="op">**</span>Algoritmo para generar un valor de $\mathbf{<span class="dv">1</span>}_{\{Y <span class="op">&lt;</span> X\}}$<span class="op">**</span>[cite: <span class="dv">4</span>]  </span>
+<span id="cb1-65"><a href="problema-1.html#cb1-65" tabindex="-1"></a>  a) Generar $U_{<span class="dv">1</span>} \sim \text{Unif}(<span class="dv">0</span>,<span class="dv">1</span>)$ y $U_{<span class="dv">2</span>} \sim \text{Unif}(<span class="dv">0</span>,<span class="dv">1</span>)$[cite: <span class="dv">4</span>].  </span>
+<span id="cb1-66"><a href="problema-1.html#cb1-66" tabindex="-1"></a>  b) $X \leftarrow <span class="op">-</span>\ln(U_{<span class="dv">1</span>})$ y $Y \leftarrow <span class="op">-</span>\ln(U_{<span class="dv">2</span>})$[cite: <span class="dv">4</span>].  </span>
+<span id="cb1-67"><a href="problema-1.html#cb1-67" tabindex="-1"></a>  c) Devolver $\mathbf{<span class="dv">1</span>}_{\{Y <span class="op">&lt;</span> X\}}$[cite: <span class="dv">4</span>].</span>
+<span id="cb1-68"><a href="problema-1.html#cb1-68" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="problema-1.html#cb1-69" tabindex="-1"></a><span class="op">*</span> <span class="op">**</span>Estimador y error estándar<span class="op">**</span>[cite: <span class="dv">4</span>]  </span>
+<span id="cb1-70"><a href="problema-1.html#cb1-70" tabindex="-1"></a>  $$\hat{I}_{N} <span class="op">=</span> \frac{<span class="dv">1</span>}{N}\sum_{i<span class="op">=</span><span class="dv">1</span>}<span class="op">^</span>{N}\mathbf{<span class="dv">1</span>}_{\{Y_{i} \le X_{i}\}}, \qquad \text{Error estándar} <span class="op">=</span> \sqrt{\frac{\hat{I}_{N}(<span class="dv">1</span> <span class="op">-</span> \hat{I}_{N})}{N}}$$</span>
+<span id="cb1-71"><a href="problema-1.html#cb1-71" tabindex="-1"></a></span>
+<span id="cb1-72"><a href="problema-1.html#cb1-72" tabindex="-1"></a><span class="co">## Código de simulación en Python</span></span>
+<span id="cb1-73"><a href="problema-1.html#cb1-73" tabindex="-1"></a></span>
+<span id="cb1-74"><a href="problema-1.html#cb1-74" tabindex="-1"></a>```python</span>
+<span id="cb1-75"><a href="problema-1.html#cb1-75" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-76"><a href="problema-1.html#cb1-76" tabindex="-1"></a></span>
+<span id="cb1-77"><a href="problema-1.html#cb1-77" tabindex="-1"></a><span class="co"># Número de simulaciones</span></span>
+<span id="cb1-78"><a href="problema-1.html#cb1-78" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">1000000</span></span>
+<span id="cb1-79"><a href="problema-1.html#cb1-79" tabindex="-1"></a></span>
+<span id="cb1-80"><a href="problema-1.html#cb1-80" tabindex="-1"></a><span class="co"># Generar variables exponenciales (tasa 1)</span></span>
+<span id="cb1-81"><a href="problema-1.html#cb1-81" tabindex="-1"></a>X <span class="op">=</span> <span class="op">-</span>np.log(np.random.rand(N))</span>
+<span id="cb1-82"><a href="problema-1.html#cb1-82" tabindex="-1"></a>Y <span class="op">=</span> <span class="op">-</span>np.log(np.random.rand(N))</span>
+<span id="cb1-83"><a href="problema-1.html#cb1-83" tabindex="-1"></a></span>
+<span id="cb1-84"><a href="problema-1.html#cb1-84" tabindex="-1"></a><span class="co"># Estimar la probabilidad P(Y &lt;= X)</span></span>
+<span id="cb1-85"><a href="problema-1.html#cb1-85" tabindex="-1"></a>estimacion <span class="op">=</span> np.mean(Y <span class="op">&lt;=</span> X)</span>
+<span id="cb1-86"><a href="problema-1.html#cb1-86" tabindex="-1"></a></span>
+<span id="cb1-87"><a href="problema-1.html#cb1-87" tabindex="-1"></a><span class="co"># Calcular error estándar</span></span>
+<span id="cb1-88"><a href="problema-1.html#cb1-88" tabindex="-1"></a>error_est <span class="op">=</span> np.sqrt(estimacion <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> estimacion) <span class="op">/</span> N)</span>
+<span id="cb1-89"><a href="problema-1.html#cb1-89" tabindex="-1"></a></span>
+<span id="cb1-90"><a href="problema-1.html#cb1-90" tabindex="-1"></a><span class="co"># Resultados</span></span>
+<span id="cb1-91"><a href="problema-1.html#cb1-91" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Valor exacto: 0.5&quot;</span>)</span>
+<span id="cb1-92"><a href="problema-1.html#cb1-92" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Estimación Monte Carlo: </span><span class="sc">{</span>estimacion<span class="sc">:.6f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb1-93"><a href="problema-1.html#cb1-93" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Error estándar: </span><span class="sc">{</span>error_est<span class="sc">:.6f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb1-94"><a href="problema-1.html#cb1-94" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Error absoluto: </span><span class="sc">{</span><span class="bu">abs</span>(estimacion <span class="op">-</span> <span class="fl">0.5</span>)<span class="sc">:.6f}</span><span class="ss">&quot;</span>)</span></code></pre></div>
 </div>
+</div>
+<div id="resultados-de-la-simulación" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Resultados de la simulación<a href="problema-1.html#resultados-de-la-simulaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Al ejecutar el código con <span class="math inline">\(N = 10^6\)</span> se obtiene una salida similar a[cite: 4]:</p>
+<table>
+<colgroup>
+<col width="16%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Método</th>
+<th align="center">Valor</th>
+<th align="center">Error absoluto</th>
+<th align="center">Error relativo</th>
+<th align="center">Error estándar</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Valor exacto</td>
+<td align="center"><span class="math inline">\(0.5\)</span></td>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">—</td>
+</tr>
+<tr class="even">
+<td align="left">Monte Carlo (<span class="math inline">\(N = 10^{6}\)</span>)</td>
+<td align="center"><span class="math inline">\(0.500123\)</span>[cite: 4]</td>
+<td align="center"><span class="math inline">\(1.23 \times 10^{-4}\)</span>[cite: 4]</td>
+<td align="center"><span class="math inline">\(2.46 \times 10^{-4}\)</span>[cite: 4]</td>
+<td align="center"><span class="math inline">\(0.000500\)</span>[cite: 4]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Interpretación:</strong> La integral exacta vale <span class="math inline">\(\frac{1}{2}\)</span>[cite: 4]. Mediante simulación de Monte Carlo obtenemos una estimación cercana al valor exacto[cite: 4]. El error disminuye como <span class="math inline">\(O(1/\sqrt{N})\)</span> consistente con la teoría de Monte Carlo[cite: 4].</p>
+
 </div>
 </div>
             </section>
@@ -195,7 +354,7 @@ return estimacion, error_est, valores_N</p>
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tamaños-de-muestra-a-probar.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ejercicio-3-generador-congruencial-lineal.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
