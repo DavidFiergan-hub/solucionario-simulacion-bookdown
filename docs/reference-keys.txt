@@ -1,0 +1,5 @@
+ejercicios-de-simulación
+sumas-uniformes-y-tiempo-de-parada
+integral-doble-monte-carlo
+generador-congruencial
+problema-del-coleccionista

@@ -1,0 +1,6 @@
+book_filename: "Solucionario_Simulacion_EPN"
+output_dir: "docs"
+language:
+  ui:
+    chapter_name: "Ejercicio "
+delete_merged_file: true

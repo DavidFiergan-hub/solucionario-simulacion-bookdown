@@ -1,0 +1,11 @@
+--- 
+title: " Bookdown v1 "
+subtitle: "Simulación: Solucionario Prueba 01"
+author: "Leonardo Medina"
+site: bookdown::bookdown_site
+documentclass: book
+---
+
+# Presentación {-}
+
+Solucionario de la materia de Simulación desarrollado en Bookdown.
