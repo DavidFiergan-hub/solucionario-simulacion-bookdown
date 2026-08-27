@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Problema 4 | Bookdown v1</title>
+  <meta name="description" content="4 Problema 4 | Bookdown v1" />
+  <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Problema 4 | Bookdown v1" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Problema 4 | Bookdown v1" />
+  
+  
+  
+
+<meta name="author" content="Leonardo Medina" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="problema-3.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+cat << 'EOF'> copy-button.html
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll("pre.sourceCode, pre").forEach(function (codeBlock) {
+                if (codeBlock.querySelector(".btn-copy")) return;
+
+                var btn = document.createElement("button");
+                btn.className = "btn-copy";
+                btn.type = "button";
+                btn.innerText = "Copiar";
+
+                codeBlock.style.position = "relative";
+                codeBlock.appendChild(btn);
+
+                var clipboard = new ClipboardJS(btn, {
+                    target: function () {
+                        var code = codeBlock.querySelector("code");
+                        return code ? code : codeBlock;
+                    }
+                });
+
+                clipboard.on("success", function (e) {
+                    btn.innerText = "¡Copiado!";
+                    btn.classList.add("btn-copy-success");
+                    setTimeout(function () {
+                        btn.innerText = "Copiar";
+                        btn.classList.remove("btn-copy-success");
+                    }, 2000);
+                    e.clearSelection();
+                });
+            });
+        });
+    </script>
+    EOF
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Solucionario Simulación EPN</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Presentación</a></li>
+<li class="chapter" data-level="1" data-path="problema-1.html"><a href="problema-1.html"><i class="fa fa-check"></i><b>1</b> Problema 1</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="problema-1.html"><a href="problema-1.html#estime-mathbben-por-la-generaci%C3%B3n-de-102-103-y-104-valores-de-n."><i class="fa fa-check"></i><b>1.1</b> 1.1. Estime <span class="math inline">\(\mathbb{E}[N]\)</span> por la generación de <span class="math inline">\(10^2\)</span>, <span class="math inline">\(10^3\)</span> y <span class="math inline">\(10^4\)</span> valores de <span class="math inline">\(N\)</span>.</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="problema-1.html"><a href="problema-1.html#simulaci%C3%B3n-de-monte-carlo."><i class="fa fa-check"></i><b>1.1.1</b> Simulación de Monte Carlo.</a></li>
+<li class="chapter" data-level="1.1.2" data-path="problema-1.html"><a href="problema-1.html#c%C3%B3digo-de-simulaci%C3%B3n-en-python."><i class="fa fa-check"></i><b>1.1.2</b> Código de simulación en Python.</a></li>
+<li class="chapter" data-level="1.1.3" data-path="problema-1.html"><a href="problema-1.html#resultados-de-la-simulaci%C3%B3n"><i class="fa fa-check"></i><b>1.1.3</b> Resultados de la simulación</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="problema-1.html"><a href="problema-1.html#cu%C3%A1l-es-el-valor-de-mathbben"><i class="fa fa-check"></i><b>1.2</b> 1.2. ¿Cuál es el valor de <span class="math inline">\(\mathbb{E}[N]\)</span>?</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="problema-1.html"><a href="problema-1.html#demostraci%C3%B3n-anal%C3%ADtica."><i class="fa fa-check"></i><b>1.2.1</b> Demostración analítica.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="problema-2.html"><a href="problema-2.html"><i class="fa fa-check"></i><b>2</b> Problema 2</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="problema-2.html"><a href="problema-2.html#c%C3%A1lculo-del-valor-exacto."><i class="fa fa-check"></i><b>2.1</b> Cálculo del valor exacto.</a></li>
+<li class="chapter" data-level="2.2" data-path="problema-2.html"><a href="problema-2.html#interpretaci%C3%B3n-probabil%C3%ADstica."><i class="fa fa-check"></i><b>2.2</b> Interpretación probabilística.</a></li>
+<li class="chapter" data-level="2.3" data-path="problema-2.html"><a href="problema-2.html#simulaci%C3%B3n-de-monte-carlo.-1"><i class="fa fa-check"></i><b>2.3</b> Simulación de Monte Carlo.</a></li>
+<li class="chapter" data-level="2.4" data-path="problema-2.html"><a href="problema-2.html#c%C3%B3digo-de-simulaci%C3%B3n-en-python.-1"><i class="fa fa-check"></i><b>2.4</b> Código de simulación en Python.</a></li>
+<li class="chapter" data-level="2.5" data-path="problema-2.html"><a href="problema-2.html#resultados-de-la-simulaci%C3%B3n-1"><i class="fa fa-check"></i><b>2.5</b> Resultados de la simulación</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="problema-2.html"><a href="problema-2.html#comparaci%C3%B3n-de-resultados"><i class="fa fa-check"></i><b>2.5.1</b> Comparación de resultados</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="problema-3.html"><a href="problema-3.html"><i class="fa fa-check"></i><b>3</b> Problema 3</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="problema-3.html"><a href="problema-3.html#es-de-ciclo-%C3%B3ptimo-el-siguiente-generador-congruencial"><i class="fa fa-check"></i><b>3.1</b> 3.1. ¿Es de ciclo óptimo el siguiente generador congruencial?</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="problema-3.html"><a href="problema-3.html#demostraci%C3%B3n-anal%C3%ADtica-teorema-de-hull-dobell."><i class="fa fa-check"></i><b>3.1.1</b> Demostración analítica (Teorema de Hull-Dobell).</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="problema-3.html"><a href="problema-3.html#tomando-como-semilla-x_0-40-cu%C3%A1nto-vale-el-valor-de-u_51202"><i class="fa fa-check"></i><b>3.2</b> 3.2. Tomando como semilla <span class="math inline">\(X_0 := 40\)</span>, ¿cuánto vale el valor de <span class="math inline">\(U_{51202}\)</span>?</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="problema-3.html"><a href="problema-3.html#demostraci%C3%B3n-anal%C3%ADtica.-1"><i class="fa fa-check"></i><b>3.2.1</b> Demostración analítica.</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="problema-3.html"><a href="problema-3.html#c%C3%B3digo-de-verificaci%C3%B3n-en-python."><i class="fa fa-check"></i><b>3.3</b> Código de verificación en Python.</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="problema-3.html"><a href="problema-3.html#resultados"><i class="fa fa-check"></i><b>3.3.1</b> Resultados</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="problema-4.html"><a href="problema-4.html"><i class="fa fa-check"></i><b>4</b> Problema 4</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="problema-4.html"><a href="problema-4.html#simulaci%C3%B3n-de-monte-carlo.-2"><i class="fa fa-check"></i><b>4.1</b> Simulación de Monte Carlo.</a></li>
+<li class="chapter" data-level="4.2" data-path="problema-4.html"><a href="problema-4.html#c%C3%B3digo-de-simulaci%C3%B3n-en-python.-2"><i class="fa fa-check"></i><b>4.2</b> Código de simulación en Python.</a></li>
+<li class="chapter" data-level="4.3" data-path="problema-4.html"><a href="problema-4.html#resultados-de-la-simulaci%C3%B3n-2"><i class="fa fa-check"></i><b>4.3</b> Resultados de la simulación</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="problema-4.html"><a href="problema-4.html#interpretaci%C3%B3n-anal%C3%ADtica."><i class="fa fa-check"></i><b>4.3.1</b> Interpretación analítica.</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/davidfiergan-hub/solucionario-simulacion-bookdown" target="blank">Ver repositorio en GitHub</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bookdown v1</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="problema-4" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Problema 4<a href="problema-4.html#problema-4" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Variación del Problema del Coleccionista.</strong> Supongamos que tenemos un álbum con 75 cromos y para completarlo hay que comprar sobres con 6 cromos. A partir de 1000 simulaciones de coleccionistas de cromos, obtener una aproximación por simulación a la respuesta de las siguientes preguntas:</li>
+</ol>
+<ul>
+<li><strong>4.1.</strong> ¿Cuál será en media el número de sobres que hay que comprar para completar la colección? ¿Cuál sería el gasto medio si cada sobre cuesta $0.8?</li>
+<li><strong>4.2.</strong> ¿Cuál sería el número mínimo de sobres para asegurar de que se completa la colección un 95% de las veces?</li>
+</ul>
+<div id="simulación-de-monte-carlo.-2" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Simulación de Monte Carlo.<a href="problema-4.html#simulaci%C3%B3n-de-monte-carlo.-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><strong>Algoritmo para simular un coleccionista</strong>
+<ol style="list-style-type: decimal">
+<li>Inicializar el álbum <span class="math inline">\(A \leftarrow \emptyset\)</span> y el contador de sobres <span class="math inline">\(S \leftarrow 0\)</span>.<br />
+</li>
+<li>Mientras el número de cromos únicos <span class="math inline">\(|A| &lt; 75\)</span>:<br />
+2.1) Generar <span class="math inline">\(6\)</span> cromos aleatorios uniformes <span class="math inline">\(c_1, \dots, c_6 \in \{1, 2, \dots, 75\}\)</span>.<br />
+2.2) Actualizar el álbum: <span class="math inline">\(A \leftarrow A \cup \{c_1, \dots, c_6\}\)</span>.<br />
+2.3) Incrementar el contador: <span class="math inline">\(S \leftarrow S + 1\)</span>.<br />
+</li>
+<li>Devolver <span class="math inline">\(S\)</span>.</li>
+</ol></li>
+<li><strong>Estimadores de Monte Carlo</strong><br />
+Se ejecutan <span class="math inline">\(M = 1000\)</span> simulaciones obteniendo <span class="math inline">\(S_1, S_2, \dots, S_M\)</span>:
+<ul>
+<li><strong>Media muestral de sobres:</strong> <span class="math inline">\(\hat{E}[S] = \frac{1}{M}\sum_{j=1}^M S_j\)</span><br />
+</li>
+<li><strong>Gasto medio:</strong> <span class="math inline">\(\hat{E}[\text{Gasto}] = \hat{E}[S] \times 0.80\)</span><br />
+</li>
+<li><strong>Error estándar:</strong> <span class="math inline">\(\text{SE} = \frac{S_S}{\sqrt{M}}\)</span><br />
+</li>
+<li><strong>Percentil 95:</strong> Valor <span class="math inline">\(s_{0.95}\)</span> tal que <span class="math inline">\(P(S \le s_{0.95}) \ge 0.95\)</span>.</li>
+</ul></li>
+</ul>
+<hr />
+</div>
+<div id="código-de-simulación-en-python.-2" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Código de simulación en Python.<a href="problema-4.html#c%C3%B3digo-de-simulaci%C3%B3n-en-python.-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="problema-4.html#cb4-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a href="problema-4.html#cb4-2" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-3"><a href="problema-4.html#cb4-3" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="problema-4.html#cb4-4" tabindex="-1"></a><span class="kw">def</span> simular_un_coleccionista(total_cromos<span class="op">=</span><span class="dv">75</span>, cromos_por_sobre<span class="op">=</span><span class="dv">6</span>):</span>
+<span id="cb4-5"><a href="problema-4.html#cb4-5" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Simula el proceso de llenar un álbum comprando sobres.&quot;&quot;&quot;</span></span>
+<span id="cb4-6"><a href="problema-4.html#cb4-6" tabindex="-1"></a>    album <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb4-7"><a href="problema-4.html#cb4-7" tabindex="-1"></a>    sobres_comprados <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-8"><a href="problema-4.html#cb4-8" tabindex="-1"></a>    <span class="cf">while</span> <span class="bu">len</span>(album) <span class="op">&lt;</span> total_cromos:</span>
+<span id="cb4-9"><a href="problema-4.html#cb4-9" tabindex="-1"></a>        sobre <span class="op">=</span> np.random.randint(<span class="dv">1</span>, total_cromos <span class="op">+</span> <span class="dv">1</span>, size<span class="op">=</span>cromos_por_sobre)</span>
+<span id="cb4-10"><a href="problema-4.html#cb4-10" tabindex="-1"></a>        album.update(sobre)</span>
+<span id="cb4-11"><a href="problema-4.html#cb4-11" tabindex="-1"></a>        sobres_comprados <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb4-12"><a href="problema-4.html#cb4-12" tabindex="-1"></a>    <span class="cf">return</span> sobres_comprados</span>
+<span id="cb4-13"><a href="problema-4.html#cb4-13" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="problema-4.html#cb4-14" tabindex="-1"></a><span class="co"># Parametrización</span></span>
+<span id="cb4-15"><a href="problema-4.html#cb4-15" tabindex="-1"></a>M <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb4-16"><a href="problema-4.html#cb4-16" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb4-17"><a href="problema-4.html#cb4-17" tabindex="-1"></a>resultados_sobres <span class="op">=</span> np.array([simular_un_coleccionista() <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(M)])</span>
+<span id="cb4-18"><a href="problema-4.html#cb4-18" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="problema-4.html#cb4-19" tabindex="-1"></a><span class="co"># Estimaciones</span></span>
+<span id="cb4-20"><a href="problema-4.html#cb4-20" tabindex="-1"></a>media_sobres <span class="op">=</span> np.mean(resultados_sobres)</span>
+<span id="cb4-21"><a href="problema-4.html#cb4-21" tabindex="-1"></a>error_est <span class="op">=</span> np.std(resultados_sobres, ddof<span class="op">=</span><span class="dv">1</span>) <span class="op">/</span> np.sqrt(M)</span>
+<span id="cb4-22"><a href="problema-4.html#cb4-22" tabindex="-1"></a>gasto_medio <span class="op">=</span> media_sobres <span class="op">*</span> <span class="fl">0.80</span></span>
+<span id="cb4-23"><a href="problema-4.html#cb4-23" tabindex="-1"></a>p95_sobres <span class="op">=</span> <span class="bu">int</span>(np.ceil(np.percentile(resultados_sobres, <span class="dv">95</span>)))</span>
+<span id="cb4-24"><a href="problema-4.html#cb4-24" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="problema-4.html#cb4-25" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Resultados de la Simulación (M = 1000)&quot;</span>)</span>
+<span id="cb4-26"><a href="problema-4.html#cb4-26" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;-&quot;</span> <span class="op">*</span> <span class="dv">50</span>)</span>
+<span id="cb4-27"><a href="problema-4.html#cb4-27" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Número medio de sobres: </span><span class="sc">{</span>media_sobres<span class="sc">:.2f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb4-28"><a href="problema-4.html#cb4-28" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Error estándar:         </span><span class="sc">{</span>error_est<span class="sc">:.2f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb4-29"><a href="problema-4.html#cb4-29" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Gasto medio estimado:   $</span><span class="sc">{</span>gasto_medio<span class="sc">:.2f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb4-30"><a href="problema-4.html#cb4-30" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Mínimo sobres (95%):    </span><span class="sc">{</span>p95_sobres<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<hr />
+</div>
+<div id="resultados-de-la-simulación-2" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Resultados de la simulación<a href="problema-4.html#resultados-de-la-simulaci%C3%B3n-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Al ejecutar la simulación con <span class="math inline">\(M = 1000\)</span> réplicas se obtienen los siguientes valores:</p>
+<table>
+<colgroup>
+<col width="28%" />
+<col width="35%" />
+<col width="35%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Pregunta / Parámetro</th>
+<th align="center">Estimación Monte Carlo</th>
+<th align="center">Error estándar / Confianza</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>4.1. Número medio de sobres</strong></td>
+<td align="center"><span class="math inline">\(61.34\text{ sobres}\)</span></td>
+<td align="center"><span class="math inline">\(\pm 0.38\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>4.1. Gasto medio ($0.8 por sobre)</strong></td>
+<td align="center"><span class="math inline">\(\$49.07\)</span></td>
+<td align="center">—</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>4.2. Mínimo de sobres para asegurar el 95%</strong></td>
+<td align="center"><span class="math inline">\(81\text{ sobres}\)</span></td>
+<td align="center">Percentil 95</td>
+</tr>
+</tbody>
+</table>
+<div id="interpretación-analítica." class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Interpretación analítica.<a href="problema-4.html#interpretaci%C3%B3n-anal%C3%ADtica." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para un álbum de <span class="math inline">\(T = 75\)</span> cromos, el número esperado de cromos individuales a comprar según la teoría del coleccionista de cupones es:</p>
+<p><span class="math display">\[\mathbb{E}[\text{Cromos}] = T \sum_{i=1}^{T} \frac{1}{i} = 75 \times H_{75} \approx 75 \times 4.9014 = 367.6\text{ cromos}\]</span></p>
+<p>Al comprarse en paquetes de <span class="math inline">\(6\)</span> cromos, el número esperado de sobres es aproximadamente <span class="math inline">\(\frac{367.6}{6} \approx 61.27\text{ sobres}\)</span>, concordando con la media muestral obtenida en la simulación.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="problema-3.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": true,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": null,
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  },
+  "toolbar": {
+    "position": "fixed"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
